@@ -1,0 +1,108 @@
+
+:root{--bg:#ffffff;--text:#171717;--muted:#6b7280;--max:1200px;--gap:24px;--radius:16px;--brand:#b48a57;}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;color:var(--text);background:var(--bg);line-height:1.6}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+.site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:10}
+.site-header .inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;color:inherit}
+.logo img{height:28px}
+.nav a{
+  margin-left:16px;
+  text-decoration:none;
+  color:var(--text);
+  opacity: 0.9;
+  transition: color .2s ease, opacity .2s ease;
+}
+.nav a:hover,
+.nav a:focus{
+  color: var(--brand);
+  opacity: 1;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 22px;     /* 底線往下移一點，較美觀 */
+  text-decoration-thickness: 2px; /* 底線粗細 */
+}
+.cover{position:relative;background:#000;color:#fff;text-align:center;padding:80px 20px}
+.cover img{max-width:280px;width:100%}
+.cover h1{font-size:48px;margin:20px 0 0}
+.cover p{font-size:18px;color:#c6c6c6;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--gap)}
+.card{border:1px solid #eee;border-radius:var(--radius);overflow:hidden;text-decoration:none;background:#fff;transition:transform .15s ease,box-shadow .15s ease;color:inherit}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.card img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
+.card .content{padding:14px 16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--brand);text-transform:uppercase;font-weight:800}
+.card h3{margin:.3em 0}
+.card p{margin:0;color:var(--muted)}
+#about{background:#f9f9f9;padding:60px 20px}
+.about-wrapper{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start;max-width:var(--max);margin:0 auto}
+.about-photo img{width:100%;border-radius:12px;object-fit:cover}
+.about-content h2{font-size:32px;margin:0 0 10px;color:var(--brand)}
+.about-content h3{font-size:20px;margin:0 0 20px;font-weight:400;color:#555}
+.about-content p{margin:0 0 20px}
+.about-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.about-box{background:#fff;border:1px solid #eee;border-radius:12px;padding:20px}
+.about-box h4{margin:0 0 10px;color:var(--brand)}
+.about-box ul{padding-left:20px;margin:0}
+.section{padding:40px 0}
+.hero{padding:24px 0 8px}
+.sub{color:var(--muted)}
+.site-footer{text-align:center;color:var(--muted);padding:40px 0;border-top:1px solid #eee;margin-top:60px}
+figure{margin:0 0 16px}
+figure img{width:100%;border:1px solid #eee;border-radius:12px}
+figcaption{color:var(--muted);font-size:14px;margin-top:6px}
+.badge{display:inline-block;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;margin:4px 6px 0 0;font-size:13px}
+@media (max-width:640px){.cover h1{font-size:34px}.about-wrapper{grid-template-columns:1fr}}
+
+
+/* === Modal Preview (Lightbox) === */
+.modal { display:none; position:fixed; z-index:100; padding-top:60px;
+         left:0; top:0; width:100%; height:100%; overflow:auto;
+         background-color:rgba(0,0,0,0.9); }
+.modal-content { margin:auto; display:block; max-width:90%; max-height:80vh; }
+#caption { margin:auto; text-align:center; color:#ccc; padding:10px; }
+.modal .close { position:absolute; top:20px; right:35px; color:#fff;
+                font-size:40px; font-weight:bold; cursor:pointer; }
+.modal .close:hover { color:#bbb; }
+
+
+
+/* === Cover with Background Image (override) === */
+.cover{
+  position: relative;
+  color:#303030;
+  text-align:center;
+  padding:120px 20px;
+  min-height:60vh;
+
+  /* Path is relative to main.css → ../images/ */
+  background-image: url('../images/hero.avif');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+}
+.cover::before{
+  content:"";
+  position:absolute; inset:0;
+  background: rgba(0,0,0,.0);
+}
+.cover > *{ position: relative; z-index: 1; }
+@media (min-width:1024px){ .cover{ min-height:70vh; } }
+
+/* 讓 Selected Works / Contact 的標題跟 Introduction 一致 */
+#works > h2,
+#contact > h2{
+  font-size: 32px;
+  margin: 0 0 10px;
+  color: var(--brand);      /* 和 Introduction 用同一個品牌色 */
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+@media (max-width: 640px){
+  #works > h2,
+  #contact > h2{ font-size: 28px; }
+}

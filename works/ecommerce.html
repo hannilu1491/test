@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E‑commerce · Hanni Lu</title><link rel="stylesheet" href="../assets/css/main.css"></head>
+<body>
+<header class="site-header"><div class="container inner"><a class="logo" href="../index.html">← Back</a><nav class="nav"><a href="../index.html#contact">Contact</a></nav></div></header>
+<main class="container">
+  <section class="hero"><div class="eyebrow">Category</div><h1>E‑commerce</h1><p class="sub">活動 EDM、商品頁、行銷橫幅</p></section>
+  <section class="section">
+    <div class="grid">
+      <a class="card" href="project-gift-edm.html"><img src="../assets/images/edm-gift.jpg" data-large="../assets/images/edm-gift.jpg" alt="禮品電商 EDM"><div class="content"><div class="eyebrow">Campaign</div><h3>禮品電商 EDM</h3><p>主視覺 · 版型設計 · 轉換提升</p></div></a>
+      <a class="card" href="project-bottle-page.html"><img src="../assets/images/bottle-page.jpg" data-large="../assets/images/bottle-page.jpg" alt="商品頁 設計"><div class="content"><div class="eyebrow">Product</div><h3>保溫瓶商品頁</h3><p>資訊模組 · Icon · 賣點卡</p></div></a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">© 2025 Hanni Lu</footer>
+
+<!-- Modal 結構 -->
+<div id="imgModal" class="modal" aria-modal="true" role="dialog">
+  <button class="close" aria-label="Close">&times;</button>
+  <img class="modal-content" id="modalImg" alt="Preview image">
+  <div id="caption" aria-live="polite"></div>
+</div>
+<script>
+(function(){
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+  const closeBtn = modal.querySelector(".close");
+  const imgs = document.querySelectorAll(".card img");
+
+  imgs.forEach(img => {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", function(e){
+      e.preventDefault();
+      modal.style.display = "block";
+      modalImg.src = this.dataset.large || this.src;
+      modalImg.alt = this.alt || "";
+      captionText.textContent = this.alt || "";
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closeModal(){
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", function(e){
+    if(e.target === modal){ closeModal(); }
+  });
+  window.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ closeModal(); }
+  });
+})();
+</script>
+
+</body></html>

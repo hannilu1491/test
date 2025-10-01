@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Illustration · Hanni Lu</title><link rel="stylesheet" href="../assets/css/main.css"></head>
+<body>
+<header class="site-header"><div class="container inner"><a class="logo" href="../index.html">← Back</a><nav class="nav"><a href="../index.html#contact">Contact</a></nav></div></header>
+<main class="container">
+  <section class="hero"><div class="eyebrow">Category</div><h1>Illustration</h1><p class="sub">角色設計、明信片、IP 形象</p></section>
+  <section class="section">
+    <div class="grid">
+      <a class="card" href="project-characters.html"><img src="../assets/images/characters.jpg" data-large="../assets/images/characters.jpg" alt="角色角色設計"><div class="content"><div class="eyebrow">Character</div><h3>角色角色設計</h3><p>多風格人物與表情集</p></div></a>
+      <a class="card" href="project-postcards.html"><img src="../assets/images/postcards.jpg" data-large="../assets/images/postcards.jpg" alt="插畫明信片"><div class="content"><div class="eyebrow">Print</div><h3>插畫明信片</h3><p>手繪風格 · 節慶系列</p></div></a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">© 2025 Hanni Lu</footer>
+
+<!-- Modal 結構 -->
+<div id="imgModal" class="modal" aria-modal="true" role="dialog">
+  <button class="close" aria-label="Close">&times;</button>
+  <img class="modal-content" id="modalImg" alt="Preview image">
+  <div id="caption" aria-live="polite"></div>
+</div>
+<script>
+(function(){
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+  const closeBtn = modal.querySelector(".close");
+  const imgs = document.querySelectorAll(".card img");
+
+  imgs.forEach(img => {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", function(e){
+      e.preventDefault();
+      modal.style.display = "block";
+      modalImg.src = this.dataset.large || this.src;
+      modalImg.alt = this.alt || "";
+      captionText.textContent = this.alt || "";
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closeModal(){
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", function(e){
+    if(e.target === modal){ closeModal(); }
+  });
+  window.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ closeModal(); }
+  });
+})();
+</script>
+
+</body></html>

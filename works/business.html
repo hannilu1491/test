@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Card · Hanni Lu</title><link rel="stylesheet" href="../assets/css/main.css"></head>
+<body>
+<header class="site-header"><div class="container inner"><a class="logo" href="../index.html">← Back</a><nav class="nav"><a href="../index.html#contact">Contact</a></nav></div></header>
+<main class="container">
+  <section class="hero"><div class="eyebrow">Category</div><h1>Business Card</h1><p class="sub">品牌 Logo、名片設計、色彩系統</p></section>
+  <section class="section">
+    <div class="grid">
+      <a class="card" href="project-gold-deer.html"><img src="../assets/images/gold-deer.jpg" data-large="../assets/images/gold-deer.jpg" alt="金鹿咖啡 商標/名片"><div class="content"><div class="eyebrow">Brand</div><h3>金鹿咖啡</h3><p>標誌 · 名片 · 視覺延伸</p></div></a>
+      <a class="card" href="project-system-furniture.html"><img src="../assets/images/system-furniture.jpg" data-large="../assets/images/system-furniture.jpg" alt="系統家具 名片/識別"><div class="content"><div class="eyebrow">Identity</div><h3>系統家具</h3><p>識別系統 · 名片 · 色票</p></div></a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">© 2025 Hanni Lu</footer>
+
+<!-- Modal 結構 -->
+<div id="imgModal" class="modal" aria-modal="true" role="dialog">
+  <button class="close" aria-label="Close">&times;</button>
+  <img class="modal-content" id="modalImg" alt="Preview image">
+  <div id="caption" aria-live="polite"></div>
+</div>
+<script>
+(function(){
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+  const closeBtn = modal.querySelector(".close");
+  const imgs = document.querySelectorAll(".card img");
+
+  imgs.forEach(img => {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", function(e){
+      e.preventDefault();
+      modal.style.display = "block";
+      modalImg.src = this.dataset.large || this.src;
+      modalImg.alt = this.alt || "";
+      captionText.textContent = this.alt || "";
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closeModal(){
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", function(e){
+    if(e.target === modal){ closeModal(); }
+  });
+  window.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ closeModal(); }
+  });
+})();
+</script>
+
+</body></html>

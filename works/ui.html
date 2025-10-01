@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI Design · Hanni Lu</title>
+<link rel="stylesheet" href="../assets/css/main.css"></head>
+<body>
+<header class="site-header"><div class="container inner"><a class="logo" href="../index.html">← Back</a><nav class="nav"><a href="../index.html#contact">Contact</a></nav></div></header>
+<main class="container">
+  <section class="hero"><div class="eyebrow">Category</div><h1>UI Design</h1><p class="sub">寵物旅館官網、綠拾光植栽購物網站…</p></section>
+  <section class="section">
+    <div class="grid">
+      <a class="card" href="project-pet-hotel.html"><img src="../assets/images/pet-hotel.jpg" data-large="../assets/images/pet-hotel.jpg" alt="愛寵樂活寓所官網"><div class="content"><div class="eyebrow">Website</div><h3>愛寵樂活寓所官網</h3><p>訂房流程 · RWD · 風格一致</p></div></a>
+      <a class="card" href="project-green-plant.html"><img src="../assets/images/green-plant.jpg" data-large="../assets/images/green-plant.jpg" alt="綠拾光植栽購物網站"><div class="content"><div class="eyebrow">E‑commerce</div><h3>綠拾光植栽購物網站</h3><p>品牌視覺 · 產品頁 · 結帳流程</p></div></a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">© 2025 Hanni Lu</footer>
+
+<!-- Modal 結構 -->
+<div id="imgModal" class="modal" aria-modal="true" role="dialog">
+  <button class="close" aria-label="Close">&times;</button>
+  <img class="modal-content" id="modalImg" alt="Preview image">
+  <div id="caption" aria-live="polite"></div>
+</div>
+<script>
+(function(){
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+  const closeBtn = modal.querySelector(".close");
+  const imgs = document.querySelectorAll(".card img");
+
+  imgs.forEach(img => {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", function(e){
+      e.preventDefault();
+      modal.style.display = "block";
+      modalImg.src = this.dataset.large || this.src;
+      modalImg.alt = this.alt || "";
+      captionText.textContent = this.alt || "";
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closeModal(){
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", function(e){
+    if(e.target === modal){ closeModal(); }
+  });
+  window.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ closeModal(); }
+  });
+})();
+</script>
+
+</body></html>
