@@ -41,3 +41,6 @@ pnpm-debug.log*
 # 空資料夾保留範例
 logs/*
 !logs/.gitkeep
+
+# macOS
+.DS_Store
