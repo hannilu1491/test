@@ -1,0 +1,43 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# 依賴 / 產出 / 快取
+node_modules/
+dist/
+build/
+out/
+coverage/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.svelte-kit/
+.vite/
+
+# log / 暫存
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 環境變數檔
+.env
+.env.*
+!.env.example
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+
+# 壓縮包
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# 空資料夾保留範例
+logs/*
+!logs/.gitkeep
