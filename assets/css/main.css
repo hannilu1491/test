@@ -32,7 +32,7 @@ section[id]{
 
 /* Header */
 .site-header{ position:sticky; top:0; background:#fff; border-bottom:1px solid #eee; z-index:10; }
-.site-header .inner{ display:flex; align-items:center; justify-content:space-between; padding:20px 0; }
+.site-header .inner{ display:flex; align-items:center; justify-content:space-between; padding:20px 20px; }
 .logo{ display:flex; align-items:center; gap:12px; text-decoration:none; font-weight:800; color:inherit }
 .logo img{ height:48px; width:auto }
 .nav{ display:flex; gap:32px }
@@ -164,7 +164,7 @@ display:contents
   border-radius:8px }
 .about-content h2{ font-size:32px; margin:0 0 10px; color:var(--brand) }
 .about-content h3{ font-size:20px; margin:0 0 16px; font-weight:600; color:#555 }
-.about-content p{ margin:0 0 14px }
+.about-content p{ margin:0 0 14px; }
 
 /* 橫向卡片（與右欄寬度一致） */
 .about-box{ 
@@ -196,6 +196,7 @@ display:contents
   min-height: 260px;        /* 可依視覺改：220~360px 都行 */
   justify-items: center;    /* 預設置中（中間欄會被拉開） */
   column-gap: clamp(24px, 3.2vw, 48px);
+  padding:0px 24px;
 }
 .contact-intro h2{ font-size:32px; margin:0 0 10px; color:var(--brand); font-weight:800; }
 .contact-intro p{ margin:0; color:var(--muted); }
