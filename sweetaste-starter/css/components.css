@@ -1,0 +1,269 @@
+/* === 輸入欄位 (Input) === */
+.input{width:100%; padding:12px 12px; border:1px solid var(--clr-line); border-radius:4px; background:#fff}
+
+/* === 分頁 (Pagination) === */
+.pagination{display:flex; justify-content:center; align-items:center; gap:8px; padding:24px 0}
+.page{display:inline-grid; place-items:center; width:40px; height:40px; border:1px solid var(--clr-line); border-radius:4px}
+.page:hover{background:#fafafa}
+.page.is-active{background:var(--clr-primary); color:#fff; border-color:var(--clr-primary)}
+
+/* Home specific */
+.home__why{display:grid; gap:40px; padding:48px 0}
+.why{display:grid; grid-template-columns:1fr; gap:16px; background:#e7efe9; padding:16px; align-items:center}
+.why--alt{background:#f1f6f3}
+.why__title{font-weight:900}
+.home__quote{display:grid; place-items:center; height:160px}
+.quote__text{writing-mode:vertical-rl; font-weight:900; letter-spacing:.2em}
+
+
+/* Login */
+.login{display:grid; grid-template-columns:1fr; gap:24px; padding:32px 0}
+.login__panel{border:1px solid var(--clr-line); padding:24px; background:#3F5D45; color:#fff; border-radius:4px}
+.login__title{margin:0 0 12px 0; font-size:24px}
+.login__social{border:1px solid var(--clr-line); padding:24px; border-radius:4px; background:#f7f7f7}
+.login__subtitle{margin:0 0 12px 0; text-align:center}
+.social-btns{display:grid; gap:8px}
+
+/* Cart */
+.cart__layout{display:grid; grid-template-columns:1fr; gap:24px; padding:24px 0}
+.cart-item{display:grid; grid-template-columns:80px 1fr auto auto; align-items:center; gap:16px; padding:12px 0; border-bottom:1px solid var(--clr-line)}
+.cart-item__thumb{width:80px;height:80px;object-fit:cover}
+.qty__btn{width:32px;height:32px;border:1px solid var(--clr-line)}
+.qty__input{width:48px;text-align:center;border:1px solid var(--clr-line); height:32px}
+.cart__summary{border:1px solid var(--clr-line); padding:16px; border-radius:4px}
+
+/* Checkout steps */
+.steps{display:flex; gap:8px; align-items:center; padding:16px 0}
+.step{width:24px;height:24px;border-radius:999px; display:grid; place-items:center; border:1px solid var(--clr-primary); color:var(--clr-primary)}
+.step.is-active{background:var(--clr-primary); color:#fff}
+.checkout__layout{display:grid; grid-template-columns:1fr; gap:24px; padding:16px 0}
+.checkout__title{font-size:24px; font-weight:900}
+.form{display:grid; gap:16px}
+.form .grid{display:grid; gap:16px}
+.grid--2{grid-template-columns:1fr 1fr}
+.summary__box{border:1px solid var(--clr-line); padding:12px; border-radius:4px}
+.summary__list{margin-top:12px}
+.summary__row{display:flex; justify-content:space-between; padding:6px 0}
+.summary__row--total{font-weight:900}
+.mini-list{display:grid; gap:8px}
+.mini-list img{width:40px;height:40px;object-fit:cover;vertical-align:middle;margin-right:6px}
+.tabs{display:flex; gap:8px; margin-bottom:12px}
+.tab{padding:8px 12px; border:1px solid var(--clr-line); border-radius:4px; background:#fff}
+.tab.is-active{background:var(--clr-accent); border-color:var(--clr-accent)}
+
+/* Success */
+.success-hero{position:relative; text-align:center}
+.success-hero img{width:100%;display:block}
+.success-hero h1{position:absolute; left:50%; top:40%; transform:translate(-50%,-50%); background:rgba(255,255,255,.9); padding:12px 16px; border-radius:4px}
+.success-hero .btn{position:absolute; left:50%; top:60%; transform:translate(-50%,-50%)}
+
+
+/* === 商品卡片 (Card grid) ==== */
+
+/*  結構主體 */
+.card {
+  flex: 0 0 var(--card-width);
+  max-width: var(--card-width);
+  border: 1px solid var(--clr-line);
+  display: flex;
+  flex-direction: column;
+  background: var(--clr-light);
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+/* 右上角收藏按鈕 */
+.card__media {
+  position: relative;
+  width: 100%;
+  height: 315px;
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 左上標籤 */
+.badge {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  font: normal normal var(--fw-medium) 16px/20px var(--font-body);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 10px;
+  letter-spacing: 0.1em;
+}
+
+/* 右上最愛愛心 */
+.fav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.fav img {
+  width: 20px;
+  height: 20px;
+  filter: invert(25%) sepia(8%) saturate(2077%) hue-rotate(80deg) brightness(90%) contrast(86%);
+  color: #3F5D45;
+}
+
+/* 產品資訊（品名 / 價格） */
+.card__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--clr-line);
+  border-bottom: 1px solid var(--clr-line);
+  height: 56px;
+}
+
+.card__title,
+.card__price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  color: var(--clr-primary);
+}
+
+.card__title {
+  font: normal normal var(--fw-light) 20px/20px var(--font-body);
+  border-right: 1px solid var(--clr-line);
+}
+
+.card__price {
+  font: normal normal var(--fw-medium) 20px/24px var(--font-body);
+}
+
+
+/* === 按鈕 (Button) === */
+.btn--block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 64px;
+  background-color: var(--clr-accent);
+  color: var(--clr-primary);
+font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  font-size: 24px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn--block:hover {
+  filter: brightness(0.95);
+}
+
+
+/* === Newsletter === */
+.newsletter {
+  background-color: var(--clr-primary);
+  color: #fff;
+  padding: 40px 120px;
+}
+
+.newsletter__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* 左側標誌區 */
+.newsletter__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: var(--fw-medium);
+  font-size: 18px;
+}
+
+.newsletter__logo {
+  width: 32px;
+  height: 32px;
+}
+
+/* === 表單區 === */
+.newsletter__form {
+  display: flex;
+  align-items: center;
+  width: 380px; /* ✅ 整體寬度固定 */
+  height: 56px;
+}
+
+/* === 輸入框容器 === */
+.newsletter__input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--clr-accent);
+  flex: 1;
+  height: 100%;
+  border: none;
+  padding-inline: var(--spacing-input-padding-x);
+  position: relative;
+}
+
+/* 郵件 icon */
+.newsletter__icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  color: var(--clr-primary);
+}
+
+/* 輸入框 */
+.newsletter__input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--clr-primary);
+}
+
+/* placeholder 樣式 */
+.newsletter__input::placeholder {
+  color: var(--clr-primary);
+  opacity: 0.6;
+}
+
+/* 右側送出按鈕 */
+.newsletter__submit {
+  width: 64px;
+  height: 100%;
+  background-color: var(--clr-secondary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.2s ease;
+}
+
+/* hover 效果 */
+.newsletter__submit:hover {
+  filter: brightness(1.05);
+}
+
+/* 送出箭頭 icon */
+.newsletter__arrow {
+  width: 24px;
+  height: 24px;
+  color: var(--clr-primary);
+}

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweetaste 商品列表</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/output.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-white">
+    <!-- === Header 導覽列 === -->
+    <header class="site-header">
+      <div class="container header__inner px-[0px] md:px-[42px] mx-auto">
+        <button
+          class="hamburger w-[24px] h-[24px] flex items-center justify-center"
+          id="hamburger"
+          aria-label="開啟選單"
+        >
+          <img
+            src="../assets/images/icon-hamburger.svg"
+            alt="開啟選單"
+            class="w-[24px] h-[24px]"
+          />
+        </button>
+
+        <a class="logo z-50" href="../index.html">
+          <img src="../assets/images/logo-all-dark.svg" alt="logo" />
+        </a>
+
+        <nav class="nav" aria-label="主選單">
+          <ul class="nav__list">
+            <li><a href="../index.html" class="nav__link">首頁</a></li>
+            <li><a href="products.html" class="nav__link">甜點</a></li>
+            <li><a href="login.html" class="nav__link">登入</a></li>
+          </ul>
+        </nav>
+
+        <a class="nav__cart" href="cart.html" aria-label="購物車">
+          <img src="../assets/images/shopping_cart.svg" alt="購物車" />
+        </a>
+      </div>
+
+      <!-- 行動選單 -->
+      <nav
+        id="mobileMenu"
+        class="mobile-menu hidden fixed top-[80px] left-0 w-full bg-white flex-col items-center justify-start gap-[16px] py-[24px] z-40 transition-all duration-300 ease-in-out"
+      >
+        <ul class="mobile-menu__list">
+          <li><a href="../index.html">首頁</a></li>
+          <li><a href="products.html">甜點</a></li>
+          <li><a href="../login.html">登入</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- === 頂部 Banner === -->
+    <section class="relative w-full px-[0px] md:px-[42px] md:px-0 sm:px-0">
+      <!-- 首圖背景 -->
+      <img
+        src="../assets/images/bannerbg.jpg"
+        alt="商品列表 Banner"
+        class="w-full h-[277px] md:h-[496px] object-cover object-[100%_center] md:object-center transition-all duration-500"
+      />
+
+      <!-- 疊字組 -->
+      <div
+        class="absolute top-[30px] right-[30px] text-[#2C4832] font-serif font-bold text-[24px] leading-[48px] tracking-[0.1em] writing-mode-vertical-rl md:text-[32px] md:leading-[48px] md:tracking-[0.2em] md:top-[40px] md:right-[82px]"
+      >
+        想吃甜點
+        <span
+          class="inline-block w-[1px] h-[40px] bg-[#2C4832] mx-[10px] md:h-[60px]"
+        ></span>
+      </div>
+      <div
+        class="absolute top-[40px] right-[66px] text-[#2C4832] font-serif font-bold text-[24px] leading-[48px] tracking-[0.1em] writing-mode-vertical-rl md:text-[32px] md:leading-[48px] md:tracking-[0.2em] md:top-[80px] md:right-[136px]"
+      >
+        是不需要理由的。
+      </div>
+    </section>
+
+    <!-- === 主內容區 === -->
+    <main
+      class="products-page flex flex-col md:flex-row w-full max-w-[1200px] mx-auto mt-0 md:mt-[60px] gap-y-[30px] md:gap-x-[20px] px-[0px] md:px-[42px]"
+    >
+      <!-- 側邊分類欄 -->
+
+      <aside class="w-full md:w-1/4 order-1 md:order-none px-[0px]">
+        <!-- 甜點類別標題 -->
+        <h2
+          class="bg-[#3F5D45] text-[#EAF0ED] text-center font-[600] text-[24px] leading-[40px] font-[PingFang TC] h-[65px] flex items-center justify-center tracking-wide"
+        >
+          甜點類別
+        </h2>
+
+        <!-- 類別選單外框 -->
+        <ul class="border border-[#EAF0ED]">
+          <!-- 所有甜點（當前頁面） -->
+          <li>
+            <a
+              href="#"
+              class="block text-center py-[16px] text-[#3F5D45] bg-[#EAF0ED] text-[20px] leading-[40px] font-medium font-[PingFang TC] transition hover:bg-[#EAF0ED] hover:text-[#3F5D45]"
+            >
+              所有甜點
+            </a>
+          </li>
+
+          <!-- 本日精選 -->
+          <li class="border-t border-[#EAF0ED]">
+            <a
+              href="#"
+              class="block text-center py-[16px] text-[#3F5D45] text-[20px] leading-[40px] font-medium font-[PingFang TC] transition hover:bg-[#EAF0ED] hover:text-[#3F5D45]"
+            >
+              本日精選
+            </a>
+          </li>
+
+          <!-- 人氣推薦 -->
+          <li class="border-t border-[#EAF0ED]">
+            <a
+              href="#"
+              class="block text-center py-[16px] text-[#3F5D45] text-[20px] leading-[40px] font-medium font-[PingFang TC] transition hover:bg-[#EAF0ED] hover:text-[#3F5D45]"
+            >
+              人氣推薦
+            </a>
+          </li>
+
+          <!-- 新品上市 -->
+          <li class="border-t border-[#EAF0ED]">
+            <a
+              href="#"
+              class="block text-center py-[16px] text-[#3F5D45] text-[20px] leading-[40px] font-medium font-[PingFang TC] transition hover:bg-[#EAF0ED] hover:text-[#3F5D45]"
+            >
+              新品上市
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- 📗 商品列表 -->
+      <section
+        class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-[30px] md:gap-[20px] px-[30px] md:px-[0px] order-2 md:order-none"
+      >
+        <!-- === 單一卡片 === -->
+
+        <!-- 1 -->
+        <article
+          class="relative border border-accent group overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
+        >
+          <!-- 商品圖片 -->
+          <img
+            src="../assets/images/p-1.png"
+            alt="藍莓優格"
+            class="w-full h-[300px] object-cover"
+          />
+
+          <!-- 左上角：本日精選（直書） -->
+          <span
+            class="absolute top-0 left-[20px] bg-primary text-accent writing-mode-vertical-rl text-[16px] font-[600] leading-[20px] font-sans px-[10px] py-[10px] tracking-[0.2em]"
+          >
+            本日精選
+          </span>
+
+          <!-- 右上角：愛心收藏 icon -->
+          <button
+            class="fav absolute top-[20px] right-[22px]"
+            aria-label="加入最愛"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-[20px] h-[20px] pointer-events-none"
+            >
+              <path
+                class="heart-fill"
+                d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+      C10.91,3.81,9.24,3,7.5,3C4.42,3,2,5.42,2,8.5
+      c0,3.78,3.4,6.86,8.55,11.54L12,21l1.45-1.32
+      C18.6,15.36,22,12.28,22,8.5
+      C22,5.42,19.58,3,16.5,3z"
+              />
+            </svg>
+          </button>
+
+          <!-- 商品資訊區塊 -->
+          <div
+            class="h-[56px] flex items-center justify-center text-primary font-sans text-[20px] leading-[20px]"
+          >
+            <!-- 使用 flex 分成三部分 -->
+            <h3 class="font-[300] flex-1 text-center">藍莓優格</h3>
+
+            <!-- 中間分隔線 -->
+            <span class="w-px h-[24px] bg-divider"></span>
+
+            <!-- 價格 -->
+            <p class="font-[600] flex-1 text-center leading-[24px]">NT$ 450</p>
+          </div>
+
+          <!-- 加入購物車按鈕 -->
+          <a
+            href="#"
+            class="block h-[65px] border-t border-accent bg-accent text-primary text-center flex items-center justify-center text-[24px] font-[600] leading-[20px] font-sans hover:bg-primary hover:text-white transition"
+          >
+            加入購物車
+          </a>
+        </article>
+
+        <!-- 2 -->
+        <article
+          class="relative border border-accent group overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
+        >
+          <!-- 商品圖片 -->
+          <img
+            src="../assets/images/p-2.png"
+            alt="雪霜甜甜圈"
+            class="w-full h-[300px] object-cover"
+          />
+
+          <!-- 左上角：本日精選（直書） -->
+          <span
+            class="absolute top-0 left-[20px] bg-primary text-accent writing-mode-vertical-rl text-[16px] font-[600] leading-[20px] font-sans px-[10px] py-[10px] tracking-[0.2em]"
+          >
+            本日精選
+          </span>
+
+          <!-- 右上角：愛心收藏 icon -->
+          <button
+            class="fav absolute top-[20px] right-[22px]"
+            aria-label="加入最愛"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-[20px] h-[20px] pointer-events-none"
+            >
+              <path
+                class="heart-fill"
+                d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+      C10.91,3.81,9.24,3,7.5,3C4.42,3,2,5.42,2,8.5
+      c0,3.78,3.4,6.86,8.55,11.54L12,21l1.45-1.32
+      C18.6,15.36,22,12.28,22,8.5
+      C22,5.42,19.58,3,16.5,3z"
+              />
+            </svg>
+          </button>
+
+          <!-- 商品資訊區塊 -->
+          <div
+            class="h-[56px] flex items-center justify-center text-primary font-sans text-[20px] leading-[20px]"
+          >
+            <!-- 使用 flex 分成三部分 -->
+            <h3 class="font-[300] flex-1 text-center">雪霜甜甜圈</h3>
+
+            <!-- 中間分隔線 -->
+            <span class="w-px h-[24px] bg-divider"></span>
+
+            <!-- 價格 -->
+            <p class="font-[600] flex-1 text-center leading-[24px]">NT$ 150</p>
+          </div>
+
+          <!-- 加入購物車按鈕 -->
+          <a
+            href="#"
+            class="block h-[65px] border-t border-accent bg-accent text-primary text-center flex items-center justify-center text-[24px] font-[600] leading-[20px] font-sans hover:bg-primary hover:text-white transition"
+          >
+            加入購物車
+          </a>
+        </article>
+
+        <!-- 3 -->
+        <article
+          class="relative border border-accent group overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
+        >
+          <!-- 商品圖片 -->
+          <img
+            src="../assets/images/p-3.png"
+            alt="綜合莓果派"
+            class="w-full h-[300px] object-cover"
+          />
+
+          <!-- 左上角：本日精選（直書） -->
+          <span
+            class="absolute top-0 left-[20px] bg-primary text-accent writing-mode-vertical-rl text-[16px] font-[600] leading-[20px] font-sans px-[10px] py-[10px] tracking-[0.2em]"
+          >
+            本日精選
+          </span>
+
+          <!-- 右上角：愛心收藏 icon -->
+          <button
+            class="fav absolute top-[20px] right-[22px]"
+            aria-label="加入最愛"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-[20px] h-[20px] pointer-events-none"
+            >
+              <path
+                class="heart-fill"
+                d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+      C10.91,3.81,9.24,3,7.5,3C4.42,3,2,5.42,2,8.5
+      c0,3.78,3.4,6.86,8.55,11.54L12,21l1.45-1.32
+      C18.6,15.36,22,12.28,22,8.5
+      C22,5.42,19.58,3,16.5,3z"
+              />
+            </svg>
+          </button>
+
+          <!-- 商品資訊區塊 -->
+          <div
+            class="h-[56px] flex items-center justify-center text-primary font-sans text-[20px] leading-[20px]"
+          >
+            <!-- 使用 flex 分成三部分 -->
+            <h3 class="font-[300] flex-1 text-center">綜合莓果派</h3>
+
+            <!-- 中間分隔線 -->
+            <span class="w-px h-[24px] bg-divider"></span>
+
+            <!-- 價格 -->
+            <p class="font-[600] flex-1 text-center leading-[24px]">NT$ 480</p>
+          </div>
+
+          <!-- 加入購物車按鈕 -->
+          <a
+            href="#"
+            class="block h-[65px] border-t border-accent bg-accent text-primary text-center flex items-center justify-center text-[24px] font-[600] leading-[20px] font-sans hover:bg-primary hover:text-white transition"
+          >
+            加入購物車
+          </a>
+        </article>
+
+        <!-- 4 -->
+        <article
+          class="relative border border-accent group overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
+        >
+          <!-- 商品圖片 -->
+          <img
+            src="../assets/images/p-4.png"
+            alt="焦糖蘋果派"
+            class="w-full h-[300px] object-cover"
+          />
+
+          <!-- 左上角：本日精選（直書） -->
+          <span
+            class="absolute top-0 left-[20px] bg-primary text-accent writing-mode-vertical-rl text-[16px] font-[600] leading-[20px] font-sans px-[10px] py-[10px] tracking-[0.2em]"
+          >
+            本日精選
+          </span>
+
+          <!-- 右上角：愛心收藏 icon -->
+          <button
+            class="fav absolute top-[20px] right-[22px]"
+            aria-label="加入最愛"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-[20px] h-[20px] pointer-events-none"
+            >
+              <path
+                class="heart-fill"
+                d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+      C10.91,3.81,9.24,3,7.5,3C4.42,3,2,5.42,2,8.5
+      c0,3.78,3.4,6.86,8.55,11.54L12,21l1.45-1.32
+      C18.6,15.36,22,12.28,22,8.5
+      C22,5.42,19.58,3,16.5,3z"
+              />
+            </svg>
+          </button>
+
+          <!-- 商品資訊區塊 -->
+          <div
+            class="h-[56px] flex items-center justify-center text-primary font-sans text-[20px] leading-[20px]"
+          >
+            <!-- 使用 flex 分成三部分 -->
+            <h3 class="font-[300] flex-1 text-center">焦糖蘋果派</h3>
+
+            <!-- 中間分隔線 -->
+            <span class="w-px h-[24px] bg-divider"></span>
+
+            <!-- 價格 -->
+            <p class="font-[600] flex-1 text-center leading-[24px]">NT$ 330</p>
+          </div>
+
+          <!-- 加入購物車按鈕 -->
+          <a
+            href="#"
+            class="block h-[65px] border-t border-accent bg-accent text-primary text-center flex items-center justify-center text-[24px] font-[600] leading-[20px] font-sans hover:bg-primary hover:text-white transition"
+          >
+            加入購物車
+          </a>
+        </article>
+
+        <!-- 5 -->
+        <article
+          class="relative border border-accent group overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
+        >
+          <!-- 商品圖片 -->
+          <img
+            src="../assets/images/p-5.png"
+            alt="櫻桃蛋糕"
+            class="w-full h-[300px] object-cover"
+          />
+
+          <!-- 左上角：本日精選（直書） -->
+          <span
+            class="absolute top-0 left-[20px] bg-primary text-accent writing-mode-vertical-rl text-[16px] font-[600] leading-[20px] font-sans px-[10px] py-[10px] tracking-[0.2em]"
+          >
+            本日精選
+          </span>
+
+          <!-- 右上角：愛心收藏 icon -->
+          <button
+            class="fav absolute top-[20px] right-[22px]"
+            aria-label="加入最愛"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-[20px] h-[20px] pointer-events-none"
+            >
+              <path
+                class="heart-fill"
+                d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+      C10.91,3.81,9.24,3,7.5,3C4.42,3,2,5.42,2,8.5
+      c0,3.78,3.4,6.86,8.55,11.54L12,21l1.45-1.32
+      C18.6,15.36,22,12.28,22,8.5
+      C22,5.42,19.58,3,16.5,3z"
+              />
+            </svg>
+          </button>
+
+          <!-- 商品資訊區塊 -->
+          <div
+            class="h-[56px] flex items-center justify-center text-primary font-sans text-[20px] leading-[20px]"
+          >
+            <!-- 使用 flex 分成三部分 -->
+            <h3 class="font-[300] flex-1 text-center">櫻桃蛋糕</h3>
+
+            <!-- 中間分隔線 -->
+            <span class="w-px h-[24px] bg-divider"></span>
+
+            <!-- 價格 -->
+            <p class="font-[600] flex-1 text-center leading-[24px]">NT$ 850</p>
+          </div>
+
+          <!-- 加入購物車按鈕 -->
+          <a
+            href="#"
+            class="block h-[65px] border-t border-accent bg-accent text-primary text-center flex items-center justify-center text-[24px] font-[600] leading-[20px] font-sans hover:bg-primary hover:text-white transition"
+          >
+            加入購物車
+          </a>
+        </article>
+
+        <!-- 6 -->
+        <article
+          class="relative border border-accent group overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
+        >
+          <!-- 商品圖片 -->
+          <img
+            src="../assets/images/p-6.png"
+            alt="草莓優格"
+            class="w-full h-[300px] object-cover"
+          />
+
+          <!-- 左上角：本日精選（直書） -->
+          <span
+            class="absolute top-0 left-[20px] bg-primary text-accent writing-mode-vertical-rl text-[16px] font-[600] leading-[20px] font-sans px-[10px] py-[10px] tracking-[0.2em]"
+          >
+            本日精選
+          </span>
+
+          <!-- 右上角：愛心收藏 icon -->
+          <button
+            class="fav absolute top-[20px] right-[22px]"
+            aria-label="加入最愛"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-[20px] h-[20px] pointer-events-none"
+            >
+              <path
+                class="heart-fill"
+                d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+      C10.91,3.81,9.24,3,7.5,3C4.42,3,2,5.42,2,8.5
+      c0,3.78,3.4,6.86,8.55,11.54L12,21l1.45-1.32
+      C18.6,15.36,22,12.28,22,8.5
+      C22,5.42,19.58,3,16.5,3z"
+              />
+            </svg>
+          </button>
+
+          <!-- 商品資訊區塊 -->
+          <div
+            class="h-[56px] flex items-center justify-center text-primary font-sans text-[20px] leading-[20px]"
+          >
+            <!-- 使用 flex 分成三部分 -->
+            <h3 class="font-[300] flex-1 text-center">草莓優格</h3>
+
+            <!-- 中間分隔線 -->
+            <span class="w-px h-[24px] bg-divider"></span>
+
+            <!-- 價格 -->
+            <p class="font-[600] flex-1 text-center leading-[24px]">NT$ 290</p>
+          </div>
+
+          <!-- 加入購物車按鈕 -->
+          <a
+            href="#"
+            class="block h-[65px] border-t border-accent bg-accent text-primary text-center flex items-center justify-center text-[24px] font-[600] leading-[20px] font-sans hover:bg-primary hover:text-white transition"
+          >
+            加入購物車
+          </a>
+        </article>
+
+        <!-- === 📄 頁碼 Pagination === -->
+        <div
+          class="products-page__pagination flex justify-center md:justify-end items-center gap-[0px] mt-[10px] mb-[0px] md:mb-[20px] md:pr-[0px] col-span-full"
+        >
+          <!-- 上一頁箭頭 -->
+          <button
+            class="w-[60px] h-[60px] flex items-center justify-center border border-solid border-[#EAF0ED] text-primary bg-white hover:bg-[#EAF0ED] transition duration-200"
+            aria-label="上一頁"
+            style="box-shadow: inset 0 0 0 1px #eaf0ed"
+          >
+            <!-- 實心左三角形 -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-[16px] h-[16px]"
+            >
+              <path d="M15.5 19L8.5 12L15.5 5Z" />
+            </svg>
+          </button>
+
+          <!-- Active 頁碼 -->
+          <button
+            class="w-[60px] h-[60px] border border-solid border-[#EAF0ED] bg-[#3F5D45] text-[#EAF0ED] text-[20px] font-[600] leading-[20px] font-[PingFang TC] -ml-[1px]"
+            style="box-shadow: inset 0 0 0 1px #3f5d45"
+          >
+            1
+          </button>
+
+          <!-- 一般頁碼 -->
+          <button
+            class="w-[60px] h-[60px] border border-solid border-[#EAF0ED] bg-white text-[#3F5D45] text-[20px] font-[600] leading-[20px] font-[PingFang TC] hover:bg-[#EAF0ED] transition duration-200 -ml-[1px]"
+            style="box-shadow: inset 0 0 0 1px #eaf0ed"
+          >
+            2
+          </button>
+
+          <button
+            class="w-[60px] h-[60px] border border-solid border-[#EAF0ED] bg-white text-[#3F5D45] text-[20px] font-[600] leading-[20px] font-[PingFang TC] hover:bg-[#EAF0ED] transition duration-200 -ml-[1px]"
+            style="box-shadow: inset 0 0 0 1px #eaf0ed"
+          >
+            3
+          </button>
+
+          <!-- 下一頁箭頭 -->
+          <button
+            class="w-[60px] h-[60px] flex items-center justify-center border border-solid border-[#EAF0ED] bg-white text-primary hover:bg-[#EAF0ED] transition duration-200 -ml-[1px]"
+            aria-label="下一頁"
+            style="box-shadow: inset 0 0 0 1px #eaf0ed"
+          >
+            <!-- 實心右三角形 -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-[16px] h-[16px]"
+            >
+              <path d="M8.5 5L15.5 12L8.5 19Z" />
+            </svg>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- === Footer === -->
+    <section class="newsletter">
+      <div class="container newsletter__inner">
+        <div class="newsletter__brand">
+          <img
+            src="../assets/images/logo-light.svg"
+            alt=""
+            class="newsletter__logo"
+          />
+          <span>訂閱你的甜蜜郵件</span>
+        </div>
+
+        <form class="newsletter__form" action="#" method="post">
+          <div class="newsletter__input-wrapper">
+            <img
+              src="../assets/images/ic-mail.svg"
+              alt="信箱圖示"
+              class="newsletter__icon"
+            />
+            <input
+              type="email"
+              class="newsletter__input"
+              placeholder="email@example.com"
+              required
+            />
+          </div>
+          <button type="submit" class="newsletter__submit" aria-label="送出">
+            <img
+              src="../assets/images/ic-arrow-right.svg"
+              alt=""
+              class="newsletter__arrow"
+            />
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer__inner">
+        <!-- 左側區 -->
+        <div class="footer__left">
+          <img
+            src="../assets/images/logotype-lg-dark.svg"
+            alt="Sweetaste 標誌"
+            class="footer__logo"
+          />
+          <div class="footer__info">
+            <p>07-1234-5678</p>
+            <p>sweetaste@email.com</p>
+            <p>800 高雄市新興區幸福路 520 號</p>
+          </div>
+          <div class="footer__social">
+            <img
+              src="../assets/images/ic-line@.svg"
+              alt="mail"
+              class="footer__icon"
+            />
+            <img
+              src="../assets/images/ic-facebook.svg"
+              alt="facebook"
+              class="footer__icon"
+            />
+          </div>
+        </div>
+
+        <!-- 右側區 -->
+        <div class="footer__right">
+          <div class="footer__slogan">
+            <div class="footer__slogan-line">
+              <span class="footer__slogan-text footer__slogan-text--top"
+                >今天是個</span
+              >
+              <span class="footer__slogan-divider"></span>
+            </div>
+            <span class="footer__slogan-text footer__slogan-text--bottom"
+              >吃甜點的好日子。</span
+            >
+          </div>
+          <p class="footer__copy">© 2018 Sweetaste* All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+/* Base / Reset / Tokens */
+/* 全域預設值，重置不同瀏覽器的差異 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+} /* 邊界盒模型，讓 padding 不會撐大元素寬度 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+} /* 移除預設外距 */
+img {
+  max-width: 100%;
+  display: block;
+} /* 圖片自適應寬度 */
+a {
+  color: inherit;
+  text-decoration: none;
+} /* 超連結沿用父元素顏色，不顯示底線 */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+} /* 移除清單預設樣式 */
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+} /* 統一按鈕外觀 */
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* :root 區塊定義全域設計 Token（顏色 / 字級 / 間距 / 陰影等） */
+:root {
+  --container: 1110px; /* 頁面最大內容寬度（12欄制） */
+
+  /* 🎨 色彩系統 Colors */
+  --clr-primary: #3f5d45; /* 主色 */
+  --clr-secondary: #ffe180; /* 輔助色（奶油黃） */
+  --clr-accent: #eaf0ed; /* 點綴色／背景色 */
+  --clr-line: #eaf0ed; /* 邊框線條 */
+  --clr-light: #fff; /* 白色底 */
+  --clr-text: #3f5d45; /* 主要文字色 */
+  --clr-muted: #8da291; /* 次要文字（灰綠） */
+  --clr-line: #e6e6e6; /* 分隔線顏色 */
+  --clr-bg: #ffffff; /* 頁面背景色 */
+  --clr-bg-alt: #f7f7f7; /* 次要區塊背景色 */
+  --clr-title: #3f5d45; /* 標題文字色 */
+  --clr-primarydark: #3f5d45; /* 主色加深 */
+
+  /* 🧱 字體系統 Fonts */
+  --fz-base: 16px; /* 預設字級 */
+  --lh-base: 1.6; /* 預設行高 */
+  --font-sans: "Noto Sans TC", "PingFang TC", system-ui, -apple-system,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif; /* 明體字族群 */
+  --font-body: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+
+  /* 🏋️ 字重系統 Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* === 標題大小 === */
+  --fs-heading-lg: 36px; /* 桌機標題 */
+  --fs-heading-md: 28px; /* 手機標題 */
+  --fs-body: 16px; /* 內文字體 */
+
+  /* 📏 間距系統 Spacing */
+  --gutter: 24px; /* 欄距單位 */
+  --spacing-page: 42px; /* 頁面左右間距 */
+  --spacing-page-mobile: 30px; /* 手機版左右邊界 */
+  --section-spacing: 80px; /* 區塊上下間距 */
+  --gap-column: 40px; /* 區塊內欄距 */
+  --gap-text: 24px; /* 段落間距 */
+  --spacing-card-gap: 20px; /* 卡片間距 */
+  --card-gap-mobile: 0px; /* 手機版不要左右露卡 */
+  --spacing-input-padding-x: 20px;
+  --spacing-input-padding-y: 16px;
+  /* 流體間距 */
+  --page-padding-min: 20px; /* 手機最小留白 */
+  --page-padding-max: 120px; /* 桌機最大留白 */
+
+  /* 📐 尺寸系統 Size */
+  --card-width: 315px; /* 卡片寬度標準 */
+
+  --radius: 4px; /* 統一圓角半徑 */
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* 陰影樣式 */
+
+  /* 背景圖路徑 Token（可隨專案替換） */
+  --img-today: url("../assets/images/p-3.png");
+  --img-popular: url("../assets/images/p-8.jpg");
+  --img-new: url("../assets/images/p-9.jpg");
+}
+
+/* 全域文字設定 */
+html {
+  font-size: var(--fz-base);
+}
+body {
+  font-family: "Noto Sans TC", "PingFang TC", system-ui, -apple-system, Segoe UI,
+    Roboto, "Helvetica Neue", Arial;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  line-height: var(--lh-base);
+}
+
+/* 工具類設定 */
+/* Utilities */
+.container {
+  max-width: var(--container);
+  margin-inline: auto; /* 置中對齊 */
+  box-sizing: border-box;
+  padding-inline: var(--spacing-page);
+}
+
+.container.home {
+  padding-inline: 0; /* 避免重複縮排 */
+}
+
+.u-hide {
+  display: none !important;
+} /* 隱藏元素（保留DOM） */
+
+/* 無障礙專用：讓內容只被螢幕閱讀器讀取 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.writing-mode-vertical-rl {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}

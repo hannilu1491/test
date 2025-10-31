@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweetaste 登入</title>
+
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/output.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-white login-page">
+    <!-- === Header === -->
+    <header class="site-header">
+      <div class="container header__inner px-[0px] md:px-[42px] mx-auto">
+        <button
+          class="hamburger w-[24px] h-[24px] flex items-center justify-center"
+          id="hamburger"
+          aria-label="開啟選單"
+        >
+          <img
+            src="../assets/images/icon-hamburger.svg"
+            alt="開啟選單"
+            class="w-[24px] h-[24px]"
+          />
+        </button>
+
+        <a class="logo z-50" href="../index.html">
+          <img src="../assets/images/logo-all-dark.svg" alt="logo" />
+        </a>
+
+        <nav class="nav" aria-label="主選單">
+          <ul class="nav__list">
+            <li><a href="../index.html" class="nav__link">首頁</a></li>
+            <li><a href="products.html" class="nav__link">甜點</a></li>
+            <li><a href="#" class="nav__link">登入</a></li>
+          </ul>
+        </nav>
+
+        <a class="nav__cart" href="cart.html" aria-label="購物車">
+          <img src="../assets/images/shopping_cart.svg" alt="購物車" />
+        </a>
+      </div>
+
+      <!-- 行動選單 -->
+      <nav
+        id="mobileMenu"
+        class="mobile-menu hidden fixed top-[80px] left-0 w-full bg-white flex-col items-center justify-start gap-[16px] py-[24px] z-40 transition-all duration-300 ease-in-out"
+      >
+        <ul class="mobile-menu__list">
+          <li><a href="../index.html">首頁</a></li>
+          <li><a href="products.html">甜點</a></li>
+          <li><a href="login.html">登入</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- === 登入主區 === -->
+    <!-- mt-0 手機貼齊導覽列；md:mt-[60px] 桌機保留上距 -->
+    <!-- mb-0 手機貼齊 newsletter；md:mb-[80px] 桌機保留下距 -->
+    <main
+      class="flex flex-col md:flex-row justify-start md:justify-center items-start md:items-center gap-[0px] md:gap-[0px] max-w-[780px] mx-auto mt-0 md:mt-[60px] mb-0 md:mb-[60px]"
+    >
+      <!-- === 左：會員登入 === -->
+      <section
+        class="flex flex-col items-center bg-primary w-full md:w-[390px] h-auto md:h-[380px] pb-[0px] md:py-[40px] md:mb-0 -mb-[1px]"
+      >
+        <!-- 標題 -->
+        <h2
+          class="text-accent font-[600] text-[36px] leading-[36px] font-[PingFang TC] py-[30px] md:mb-[40px] md:pt-0 md:pb-0"
+        >
+          會員登入
+        </h2>
+
+        <!-- 手機版社群登入 -->
+        <div
+          class="flex md:hidden bg-[#EAF0ED] w-full px-[30px] py-[30px] justify-between mb-[30px] gap-[0px]"
+        >
+          <!-- Facebook -->
+          <button
+            class="group flex-1 h-[56px] flex justify-center items-center border border-solid border-[#EAF0ED] bg-white relative transition-all duration-300 hover:bg-[#F7F9F8]"
+          >
+            <img
+              src="../assets/images/facebook-gray.svg"
+              class="w-[83px] h-[16px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="../assets/images/facebook-color.svg"
+              class="w-[83px] h-[16px] absolute opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </button>
+
+          <!-- Google -->
+          <button
+            class="group flex-1 h-[56px] flex justify-center items-center border border-solid border-[#EAF0ED] bg-white relative transition-all duration-300 hover:bg-[#F7F9F8]"
+          >
+            <img
+              src="../assets/images/google-gray.svg"
+              class="w-[73px] h-[24px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="../assets/images/google-color.svg"
+              class="w-[73px] h-[24px] absolute opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </button>
+
+          <!-- Yahoo -->
+          <button
+            class="group flex-1 h-[56px] flex justify-center items-center border border-solid border-[#EAF0ED] bg-white relative transition-all duration-300 hover:bg-[#F7F9F8]"
+          >
+            <img
+              src="../assets/images/yahoo-gray.svg"
+              class="w-[74px] h-[17px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="../assets/images/yahoo-color.svg"
+              class="w-[74px] h-[17px] absolute opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </button>
+        </div>
+
+        <!-- 登入表單 -->
+        <form class="flex flex-col w-full px-[30px] text-left">
+          <div class="relative mb-[16px]">
+            <input
+              type="email"
+              placeholder="電子信箱／手機號碼"
+              class="w-full h-[56px] bg-accent text-primary text-[16px] leading-[20px] font-[300] font-[PingFang TC] placeholder-[#8DA291] pl-[50px] focus:outline-none"
+            />
+            <img
+              src="../assets/images/ic-mail-dark.svg"
+              alt=""
+              class="absolute left-[20px] top-1/2 -translate-y-1/2 w-[24px] h-[24px]"
+            />
+          </div>
+
+          <div class="relative mb-[12px]">
+            <input
+              type="password"
+              placeholder="請輸入使用者密碼"
+              class="w-full h-[56px] bg-accent text-primary text-[16px] leading-[20px] font-[300] font-[PingFang TC] placeholder-[#8DA291] pl-[50px] focus:outline-none"
+            />
+            <img
+              src="../assets/images/ic-lock-dark.svg"
+              alt=""
+              class="absolute left-[20px] top-1/2 -translate-y-1/2 w-[24px] h-[24px]"
+            />
+          </div>
+
+          <label
+            class="flex items-center gap-[8px] mt-[0px] mb-[30px] text-accent text-[16px] leading-[36px] font-[600] font-[PingFang TC]"
+          >
+            <input
+              type="checkbox"
+              class="w-[16px] h-[16px] accent-accent cursor-pointer"
+            />
+            記住我
+          </label>
+
+          <button
+            type="submit"
+            class="w-[calc(100%+60px)] -mx-[30px] h-[65px] bg-action text-primary text-[24px] leading-[20px] font-[600] font-[PingFang TC] tracking-[0.05em] transition-all duration-200 ease-in-out hover:bg-[#ffed95] active:translate-y-[2px] active:shadow-inner"
+          >
+            登入帳號
+          </button>
+        </form>
+      </section>
+
+      <!-- === 右：桌機版社群登入 === -->
+      <section
+        class="hidden md:flex flex-col items-center justify-center bg-[#EAF0ED] w-[390px] h-[350px] px-[30px]"
+      >
+        <div
+          class="flex items-center justify-center w-full gap-[16px] mt-[40px] mb-[36px]"
+        >
+          <span class="flex-1 h-px bg-[#8DA291] opacity-40"></span>
+          <h2
+            class="text-[#8DA291] text-[24px] leading-[36px] font-[300] font-[PingFang TC] whitespace-nowrap"
+          >
+            連結社群帳號
+          </h2>
+          <span class="flex-1 h-px bg-[#8DA291] opacity-40"></span>
+        </div>
+
+        <!-- 桌機三顆按鈕垂直排列 -->
+        <div class="flex flex-col w-full space-y-[16px] mb-[40px]">
+          <!-- Facebook -->
+          <button
+            class="group w-full h-[56px] bg-white flex justify-center items-center relative overflow-hidden rounded-none hover:bg-[#F7F9F8] active:scale-[0.97] transition-all duration-300 ease-in-out"
+          >
+            <img
+              src="../assets/images/facebook-gray.svg"
+              alt="facebook"
+              class="w-[108px] h-[21px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="../assets/images/facebook-color.svg"
+              alt="facebook"
+              class="w-[108px] h-[21px] absolute opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </button>
+
+          <!-- Google -->
+          <button
+            class="group w-full h-[56px] bg-white flex justify-center items-center relative overflow-hidden rounded-none hover:bg-[#F7F9F8] active:scale-[0.97] transition-all duration-300 ease-in-out"
+          >
+            <img
+              src="../assets/images/google-gray.svg"
+              alt="google"
+              class="w-[94px] h-[31px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="../assets/images/google-color.svg"
+              alt="google"
+              class="w-[94px] h-[31px] absolute opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </button>
+
+          <!-- Yahoo -->
+          <button
+            class="group w-full h-[56px] bg-white flex justify-center items-center relative overflow-hidden rounded-none hover:bg-[#F7F9F8] active:scale-[0.97] transition-all duration-300 ease-in-out"
+          >
+            <img
+              src="../assets/images/yahoo-gray.svg"
+              alt="yahoo"
+              class="w-[97px] h-[22px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="../assets/images/yahoo-color.svg"
+              alt="yahoo"
+              class="w-[97px] h-[22px] absolute opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- === Footer === -->
+    <section class="newsletter">
+      <div class="container newsletter__inner">
+        <div class="newsletter__brand">
+          <img
+            src="../assets/images/logo-light.svg"
+            alt=""
+            class="newsletter__logo"
+          />
+          <span>訂閱你的甜蜜郵件</span>
+        </div>
+
+        <form class="newsletter__form" action="#" method="post">
+          <div class="newsletter__input-wrapper">
+            <img
+              src="../assets/images/ic-mail.svg"
+              alt="信箱圖示"
+              class="newsletter__icon"
+            />
+            <input
+              type="email"
+              class="newsletter__input"
+              placeholder="email@example.com"
+              required
+            />
+          </div>
+          <button type="submit" class="newsletter__submit" aria-label="送出">
+            <img
+              src="../assets/images/ic-arrow-right.svg"
+              alt=""
+              class="newsletter__arrow"
+            />
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <img
+            src="../assets/images/logotype-lg-dark.svg"
+            alt="Sweetaste 標誌"
+            class="footer__logo"
+          />
+          <div class="footer__info">
+            <p>07-1234-5678</p>
+            <p>sweetaste@email.com</p>
+            <p>800 高雄市新興區幸福路 520 號</p>
+          </div>
+          <div class="footer__social">
+            <img
+              src="../assets/images/ic-line@.svg"
+              alt="mail"
+              class="footer__icon"
+            />
+            <img
+              src="../assets/images/ic-facebook.svg"
+              alt="facebook"
+              class="footer__icon"
+            />
+          </div>
+        </div>
+
+        <div class="footer__right">
+          <div class="footer__slogan">
+            <div class="footer__slogan-line">
+              <span class="footer__slogan-text footer__slogan-text--top"
+                >今天是個</span
+              >
+              <span class="footer__slogan-divider"></span>
+            </div>
+            <span class="footer__slogan-text footer__slogan-text--bottom"
+              >吃甜點的好日子。</span
+            >
+          </div>
+          <p class="footer__copy">© 2018 Sweetaste* All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

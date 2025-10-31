@@ -1,0 +1,12 @@
+.container{width:min(100% - 84px, var(--container)); margin-inline:auto}
+
+/* 常用對齊與間距工具 */
+.u-text-center{text-align:center}
+.u-mt-0{margin-top:0}
+.u-mb-0{margin-bottom:0}
+.u-mb-8{margin-bottom:8px}
+.u-mb-16{margin-bottom:16px}
+.u-mb-24{margin-bottom:24px}
+.u-p-16{padding:16px}
+.u-hide{display:none !important}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}

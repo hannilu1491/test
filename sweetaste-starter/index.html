@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sweetaste</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header__inner">
+        <button class="hamburger" id="hamburger" aria-label="開啟選單">
+          <img src="assets/images/icon-hamburger.svg" alt="開啟選單" />
+        </button>
+
+        <a class="logo relative z-[50]" href="index.html">
+          <img src="assets/images/logo-all-dark.svg" alt="logo" />
+        </a>
+
+        <nav class="nav" aria-label="主選單">
+          <ul class="nav__list">
+            <li><a href="index.html" class="nav__link">首頁</a></li>
+            <li><a href="page/products.html" class="nav__link">甜點</a></li>
+            <li><a href="page/login.html" class="nav__link">登入</a></li>
+          </ul>
+        </nav>
+
+        <a class="nav__cart" href="page/cart.html" aria-label="購物車">
+          <img src="assets/images/shopping_cart.svg" alt="購物車" />
+        </a>
+      </div>
+
+      <!-- 行動選單 -->
+      <nav class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu__list">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="page/products.html">甜點</a></li>
+          <li><a href="page/login.html">登入</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="banner">
+      <img
+        class="banner__img"
+        src="assets/images/herobanner.jpg"
+        alt="Banner"
+      />
+      <div class="banner__tabs">
+        <a
+          class="banner__tab banner__tab--today"
+          href="page/products.html"
+          data-text="本日精選"
+        ></a>
+        <a
+          class="banner__tab banner__tab--popular"
+          href="page/products.html"
+          data-text="人氣推薦"
+        ></a>
+        <a
+          class="banner__tab banner__tab--new"
+          href="page/products.html"
+          data-text="新品上市"
+        ></a>
+      </div>
+    </section>
+
+    <!-- 為什麼選擇了做甜點 -->
+    <section class="why-section">
+      <div class="why-section__grid">
+        <!-- 圖片欄 -->
+        <div class="why-section__col why-section__col--img">
+          <img src="assets/images/feature-1.jpg" alt="為什麼選擇了做甜點" />
+        </div>
+
+        <!-- 內文欄 -->
+        <div class="why-section__col why-section__col--text">
+          <div class="why-textbox">
+            <p class="why-text">
+              我們想做出能讓人微笑的甜點。把幸福藏進奶油與糖粉之間，每一次攪拌，都是溫柔的對話。願甜點成為你心裡的片刻安靜。
+            </p>
+            <p class="why-text">甜點不只是食物，而是一種關於愛與療癒的語言。</p>
+          </div>
+        </div>
+
+        <!-- 標題欄 -->
+        <div class="why-section__title-group">
+          <div class="why-section__title-line">
+            <span class="why-section__title-text why-section__title-text--top"
+              >為什麼</span
+            >
+            <span class="why-section__title-divider"></span>
+          </div>
+          <div class="why-section__title-text why-section__title-text--bottom">
+            選擇了做甜點？
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 為什麼一定要吃甜點 -->
+    <section class="why-section why-section--reverse">
+      <div class="why-section__grid">
+        <!-- 文字欄 -->
+        <div class="why-section__col why-section__col--text">
+          <div class="why-textbox">
+            <p class="why-text">
+              生活的甜，不一定要很大聲，但總該在某個時刻被嚐到。當糖香融入口中，那份單純的快樂，會讓所有煩惱暫時停在門外。
+            </p>
+            <p class="why-text">因為甜點提醒我們——幸福，其實一直都在身邊。</p>
+          </div>
+        </div>
+
+        <!-- 標題欄 -->
+        <div class="why-section__col why-section__col--title">
+          <div class="why-section__title-group">
+            <div class="why-section__title-line">
+              <span class="why-section__title-text why-section__title-text--top"
+                >為什麼</span
+              >
+              <span class="why-section__title-divider"></span>
+            </div>
+            <div
+              class="why-section__title-text why-section__title-text--bottom"
+            >
+              一定要吃甜點？
+            </div>
+          </div>
+        </div>
+
+        <!-- 圖片欄 -->
+        <div class="why-section__col why-section__col--img">
+          <img src="assets/images/feature-2.jpeg" alt="為什麼一定要吃甜點" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 想吃甜點是不需要理由的 -->
+    <section class="reason-section">
+      <div class="reason-section__inner">
+        <div class="reason-section__text-group">
+          <div class="reason-section____title-line">
+            <span class="reason-section__text reason-section__text--top"
+              >想吃甜點</span
+            >
+            <span class="reason-section__divider"></span>
+          </div>
+          <span class="reason-section__text reason-section__text--bottom"
+            >是不需要理由的。</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <main class="container home">
+      <section class="home__cards">
+        <!-- 卡片 1 -->
+        <article class="card">
+          <div class="card__media">
+            <img src="assets/images/p-2.png" alt="焦糖馬卡龍" />
+            <span class="badge">本日精選</span>
+            <button
+              class="fav absolute top-[20px] right-[22px]"
+              aria-label="加入最愛"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="w-[20px] h-[20px] pointer-events-none"
+              >
+                <path
+                  class="heart-fill"
+                  d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+        C10.91,3.81,9.24,3,7.5,3
+        C4.42,3,2,5.42,2,8.5
+        c0,3.78,3.4,6.86,8.55,11.54L12,21
+        l1.45-1.32C18.6,15.36,22,12.28,22,8.5
+        C22,5.42,19.58,3,16.5,3z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">焦糖馬卡龍</h3>
+            <p class="card__price">NT$ 450</p>
+          </div>
+          <a
+            href="cart.html"
+            class="btn btn--block h-[65px] border-t border-[#EAF0ED] bg-[#EAF0ED] text-[#3F5D45] text-center flex items-center justify-center text-[24px] font-[600] hover:bg-[#3F5D45] hover:text-white transition duration-300"
+            style="border-radius: 0"
+            >加入購物車</a
+          >
+        </article>
+
+        <!-- 卡片 2 -->
+        <article class="card">
+          <div class="card__media">
+            <img src="assets/images/p-5.png" alt="焦糖馬卡龍" />
+            <span class="badge">本日精選</span>
+            <button
+              class="fav absolute top-[20px] right-[22px]"
+              aria-label="加入最愛"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="w-[20px] h-[20px] pointer-events-none"
+              >
+                <path
+                  class="heart-fill"
+                  d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+        C10.91,3.81,9.24,3,7.5,3
+        C4.42,3,2,5.42,2,8.5
+        c0,3.78,3.4,6.86,8.55,11.54L12,21
+        l1.45-1.32C18.6,15.36,22,12.28,22,8.5
+        C22,5.42,19.58,3,16.5,3z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">焦糖馬卡龍</h3>
+            <p class="card__price">NT$ 450</p>
+          </div>
+          <a
+            href="cart.html"
+            class="btn btn--block h-[65px] border-t border-[#EAF0ED] bg-[#EAF0ED] text-[#3F5D45] text-center flex items-center justify-center text-[24px] font-[600] hover:bg-[#3F5D45] hover:text-white transition duration-300"
+            style="border-radius: 0"
+            >加入購物車</a
+          >
+        </article>
+
+        <!-- 卡片 3 -->
+        <article class="card">
+          <div class="card__media">
+            <img src="assets/images/p-7.jpeg" alt="焦糖馬卡龍" />
+            <span class="badge">本日精選</span>
+            <button
+              class="fav absolute top-[20px] right-[22px]"
+              aria-label="加入最愛"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="w-[20px] h-[20px] pointer-events-none"
+              >
+                <path
+                  class="heart-fill"
+                  d="M16.5,3c-1.74,0-3.41.81-4.5,2.09
+        C10.91,3.81,9.24,3,7.5,3
+        C4.42,3,2,5.42,2,8.5
+        c0,3.78,3.4,6.86,8.55,11.54L12,21
+        l1.45-1.32C18.6,15.36,22,12.28,22,8.5
+        C22,5.42,19.58,3,16.5,3z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">焦糖馬卡龍</h3>
+            <p class="card__price">NT$ 450</p>
+          </div>
+          <a
+            href="cart.html"
+            class="btn btn--block h-[65px] border-t border-[#EAF0ED] bg-[#EAF0ED] text-[#3F5D45] text-center flex items-center justify-center text-[24px] font-[600] hover:bg-[#3F5D45] hover:text-white transition duration-300"
+            style="border-radius: 0"
+            >加入購物車</a
+          >
+        </article>
+      </section>
+    </main>
+
+    <!-- === Footer === -->
+    <section class="newsletter">
+      <div class="container newsletter__inner">
+        <div class="newsletter__brand">
+          <img
+            src="assets/images/logo-light.svg"
+            alt=""
+            class="newsletter__logo"
+          />
+          <span>訂閱你的甜蜜郵件</span>
+        </div>
+
+        <form class="newsletter__form" action="#" method="post">
+          <div class="newsletter__input-wrapper">
+            <img
+              src="assets/images/ic-mail.svg"
+              alt="信箱圖示"
+              class="newsletter__icon"
+            />
+            <input
+              type="email"
+              class="newsletter__input"
+              placeholder="email@example.com"
+              required
+            />
+          </div>
+          <button type="submit" class="newsletter__submit" aria-label="送出">
+            <img
+              src="assets/images/ic-arrow-right.svg"
+              alt=""
+              class="newsletter__arrow"
+            />
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer__inner">
+        <!-- 左側區 -->
+        <div class="footer__left">
+          <img
+            src="assets/images/logotype-lg-dark.svg"
+            alt="Sweetaste 標誌"
+            class="footer__logo"
+          />
+          <div class="footer__info">
+            <p>07-1234-5678</p>
+            <p>sweetaste@email.com</p>
+            <p>800 高雄市新興區幸福路 520 號</p>
+          </div>
+          <div class="footer__social">
+            <img
+              src="assets/images/ic-line@.svg"
+              alt="mail"
+              class="footer__icon"
+            />
+            <img
+              src="assets/images/ic-facebook.svg"
+              alt="facebook"
+              class="footer__icon"
+            />
+          </div>
+        </div>
+
+        <!-- 右側區 -->
+        <div class="footer__right">
+          <div class="footer__slogan">
+            <div class="footer__slogan-line">
+              <span class="footer__slogan-text footer__slogan-text--top"
+                >今天是個</span
+              >
+              <span class="footer__slogan-divider"></span>
+            </div>
+            <span class="footer__slogan-text footer__slogan-text--bottom"
+              >吃甜點的好日子。</span
+            >
+          </div>
+          <p class="footer__copy">© 2018 Sweetaste* All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

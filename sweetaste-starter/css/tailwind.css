@@ -1,0 +1,21 @@
+/* === Tailwind 主檔案 === */
+/* 匯入 Tailwind 三層架構 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Sweetaste 自訂設計系統 === */
+@layer base {
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", sans-serif;
+    color: #3f5d45;
+    background-color: #fff;
+  }
+}
+
+/* 可在這裡擴充元件樣式，例如共用按鈕 */
+@layer components {
+  .btn {
+    @apply bg-primary text-accent px-6 py-2 rounded-md font-semibold hover:bg-[#2c4632] transition;
+  }
+}
