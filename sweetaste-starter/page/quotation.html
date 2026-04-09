@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>正式中文報價單工具</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ebe7de;
+        --paper: #fcfbf7;
+        --ink: #1f2f2b;
+        --muted: #63716b;
+        --line: #d9d3c8;
+        --brand: #1f4f45;
+        --brand-soft: #e9eeea;
+        --accent: #bea464;
+        --danger: #912e2e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans TC", sans-serif;
+      }
+
+      .workspace {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 18px;
+        display: grid;
+        grid-template-columns: 370px 1fr;
+        gap: 22px;
+      }
+
+      .panel {
+        position: sticky;
+        top: 14px;
+        max-height: calc(100vh - 28px);
+        overflow: auto;
+        border: 1px solid #e2ddd1;
+        border-radius: 14px;
+        background: #ffffff;
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+        padding: 16px;
+      }
+
+      .panel h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .panel-sub {
+        margin: 6px 0 14px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .panel-section {
+        border: 1px solid #e6e1d8;
+        border-radius: 12px;
+        background: #f9f8f5;
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+
+      .panel-section h2 {
+        margin: 0 0 10px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        color: #35514a;
+      }
+
+      .field {
+        margin-bottom: 10px;
+      }
+
+      .field:last-child {
+        margin-bottom: 0;
+      }
+
+      .row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        color: #3e5450;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid #ccd6d2;
+        border-radius: 9px;
+        background: #fff;
+        padding: 9px 10px;
+        font-size: 14px;
+        font-family: inherit;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 62px;
+      }
+
+      .btn {
+        border: 0;
+        border-radius: 9px;
+        padding: 9px 11px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--brand);
+        color: #f3f7f6;
+      }
+
+      .btn-soft {
+        background: #e8efec;
+        color: #234840;
+      }
+
+      .btn-danger {
+        background: #f9e6e6;
+        color: var(--danger);
+      }
+
+      .btn-accent {
+        background: var(--accent);
+        color: #1f2419;
+      }
+
+      .btn-stack {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .manager-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .manager-card {
+        background: #fff;
+        border: 1px solid #dfdacf;
+        border-radius: 9px;
+        padding: 8px;
+      }
+
+      .manager-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        align-items: start;
+      }
+
+      .manager-head {
+        margin: 0 0 6px;
+        font-size: 12px;
+        color: #586a64;
+      }
+
+      .manager-empty {
+        border: 1px dashed #cfc8b9;
+        border-radius: 8px;
+        padding: 10px;
+        color: #7a837f;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .preview-shell {
+        overflow: auto;
+      }
+
+      .a4 {
+        width: 794px;
+        min-height: 1123px;
+        margin: 0 auto;
+        background: var(--paper);
+        border-radius: 10px;
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.14);
+        padding: 38px 42px;
+      }
+
+      .quote-header {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 16px;
+        margin-bottom: 18px;
+      }
+
+      .quote-top {
+        display: grid;
+        grid-template-columns: 90px 1fr auto;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .logo-box {
+        width: 90px;
+        height: 90px;
+        border-radius: 10px;
+        border: 1px dashed #c9beb0;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #888178;
+        font-size: 11px;
+        overflow: hidden;
+      }
+
+      .logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .brand-name {
+        margin: 0;
+        font-family: "Noto Serif TC", serif;
+        font-size: 24px;
+        letter-spacing: 0.04em;
+      }
+
+      .project-name {
+        margin: 4px 0 0;
+        font-size: 13px;
+        color: #4f6560;
+      }
+
+      .quote-title {
+        margin: 0;
+        font-family: "Noto Serif TC", serif;
+        color: var(--brand);
+        font-size: 28px;
+      }
+
+      .meta-grid {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 14px;
+      }
+
+      .meta-item {
+        display: grid;
+        grid-template-columns: 78px 1fr;
+        gap: 8px;
+        font-size: 13px;
+      }
+
+      .meta-label {
+        color: #546660;
+      }
+
+      .meta-value {
+        min-height: 22px;
+        border-bottom: 1px solid #e7e0d4;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        font-size: 15px;
+        color: var(--brand);
+        letter-spacing: 0.06em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #d8d2c6;
+        padding: 8px;
+        font-size: 13px;
+        vertical-align: top;
+      }
+
+      th {
+        background: var(--brand-soft);
+        color: #26463f;
+      }
+
+      .col-no {
+        width: 52px;
+        text-align: center;
+      }
+
+      .col-item {
+        width: 170px;
+      }
+
+      .col-amount {
+        width: 138px;
+        text-align: right;
+      }
+
+      .spec-text {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .totals {
+        margin-top: 12px;
+        margin-left: auto;
+        width: 320px;
+        border: 1px solid #d8d0c2;
+      }
+
+      .totals-row {
+        display: grid;
+        grid-template-columns: 1fr 140px;
+        border-bottom: 1px solid #ddd7ca;
+        font-size: 13px;
+      }
+
+      .totals-row:last-child {
+        border-bottom: none;
+      }
+
+      .totals-label,
+      .totals-value {
+        padding: 8px 10px;
+      }
+
+      .totals-value {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .totals-row.strong {
+        background: #f2ecd9;
+        font-weight: 700;
+        font-size: 15px;
+      }
+
+      .payment,
+      .notes,
+      .signatures {
+        margin-top: 20px;
+      }
+
+      .kv-table {
+        border: 1px solid #d8d2c5;
+      }
+
+      .kv-row {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        border-bottom: 1px solid #e2dccf;
+      }
+
+      .kv-row:last-child {
+        border-bottom: none;
+      }
+
+      .kv-label {
+        background: #f8f4ea;
+        border-right: 1px solid #e2dccf;
+        color: #4f5f5a;
+        padding: 9px 10px;
+        font-size: 13px;
+      }
+
+      .kv-value {
+        padding: 9px 10px;
+        font-size: 13px;
+        white-space: pre-wrap;
+      }
+
+      .sign-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 12px;
+      }
+
+      .sign-box {
+        border: 1px solid #ddd5c8;
+        min-height: 120px;
+        padding: 12px;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .sign-line {
+        width: 100%;
+        border-top: 1px solid #777166;
+        text-align: center;
+        padding-top: 6px;
+        font-size: 13px;
+      }
+
+      .print-note {
+        margin-top: 22px;
+        color: #69736f;
+        text-align: center;
+        font-size: 11px;
+      }
+
+      @media (max-width: 1220px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+          max-height: none;
+        }
+
+        .row-2,
+        .btn-stack {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media print {
+        @page {
+          size: A4 portrait;
+          margin: 10mm;
+        }
+
+        body {
+          background: #fff;
+        }
+
+        .panel {
+          display: none;
+        }
+
+        .workspace {
+          display: block;
+          padding: 0;
+        }
+
+        .a4 {
+          width: auto;
+          min-height: auto;
+          margin: 0;
+          border-radius: 0;
+          box-shadow: none;
+          padding: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="workspace">
+      <aside class="panel">
+        <h1>中文報價單工具</h1>
+        <p class="panel-sub">可商用版型：左側編輯、右側 A4 預覽、本機儲存、下載 PDF。</p>
+
+        <section class="panel-section">
+          <h2>基本資訊</h2>
+          <div class="field">
+            <label for="brandNameInput">品牌名稱</label>
+            <input id="brandNameInput" type="text" />
+          </div>
+          <div class="field">
+            <label for="logoUploadInput">Logo 上傳</label>
+            <input id="logoUploadInput" type="file" accept="image/*" />
+          </div>
+          <div class="field">
+            <label for="quotationTitleInput">報價單標題</label>
+            <input id="quotationTitleInput" type="text" />
+          </div>
+          <div class="field">
+            <label for="projectNameInput">專案名稱</label>
+            <input id="projectNameInput" type="text" />
+          </div>
+          <div class="field">
+            <label for="companyNameInput">公司名稱</label>
+            <input id="companyNameInput" type="text" />
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="phoneInput">電話</label>
+              <input id="phoneInput" type="text" />
+            </div>
+            <div class="field">
+              <label for="dateInput">日期</label>
+              <input id="dateInput" type="date" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="addressInput">地址</label>
+            <input id="addressInput" type="text" />
+          </div>
+        </section>
+
+        <section class="panel-section">
+          <h2>明細設定</h2>
+          <div class="field">
+            <button id="addItemBtn" class="btn btn-primary" type="button">新增明細列</button>
+          </div>
+          <div id="itemsManager" class="manager-list"></div>
+        </section>
+
+        <section class="panel-section">
+          <h2>付款方式</h2>
+          <div class="field">
+            <button id="addPaymentLineBtn" class="btn btn-soft" type="button">新增付款欄位</button>
+          </div>
+          <div id="paymentManager" class="manager-list"></div>
+        </section>
+
+        <section class="panel-section">
+          <h2>備註</h2>
+          <div class="field">
+            <button id="addNoteLineBtn" class="btn btn-soft" type="button">新增備註欄位</button>
+          </div>
+          <div id="notesManager" class="manager-list"></div>
+        </section>
+
+        <section class="panel-section">
+          <h2>操作</h2>
+          <div class="btn-stack">
+            <button id="saveDraftBtn" class="btn btn-soft" type="button">儲存草稿</button>
+            <button id="resetBtn" class="btn btn-danger" type="button">重設資料</button>
+          </div>
+          <div class="field" style="margin-top: 8px">
+            <button id="downloadPdfBtn" class="btn btn-accent" type="button">下載 PDF（A4）</button>
+          </div>
+        </section>
+      </aside>
+
+      <main class="preview-shell">
+        <article class="a4" id="quotePreview">
+          <header class="quote-header">
+            <div class="quote-top">
+              <div class="logo-box" id="logoPreview">品牌 Logo</div>
+              <div>
+                <h2 class="brand-name" id="brandNamePreview"></h2>
+                <p class="project-name" id="projectNamePreview"></p>
+              </div>
+              <h1 class="quote-title" id="quotationTitlePreview"></h1>
+            </div>
+            <div class="meta-grid">
+              <div class="meta-item"><span class="meta-label">公司名稱</span><span class="meta-value" id="companyNamePreview"></span></div>
+              <div class="meta-item"><span class="meta-label">日期</span><span class="meta-value" id="datePreview"></span></div>
+              <div class="meta-item"><span class="meta-label">電話</span><span class="meta-value" id="phonePreview"></span></div>
+              <div class="meta-item"><span class="meta-label">地址</span><span class="meta-value" id="addressPreview"></span></div>
+            </div>
+          </header>
+
+          <section>
+            <h3 class="section-title">報價明細</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th class="col-no">編號</th>
+                  <th class="col-item">項目</th>
+                  <th>規格內容</th>
+                  <th class="col-amount">金額</th>
+                </tr>
+              </thead>
+              <tbody id="itemsPreviewBody"></tbody>
+            </table>
+            <div id="totalsPreview" class="totals"></div>
+          </section>
+
+          <section class="payment">
+            <h3 class="section-title">付款方式</h3>
+            <div class="kv-table" id="paymentPreview"></div>
+          </section>
+
+          <section class="notes">
+            <h3 class="section-title">備註</h3>
+            <div class="kv-table" id="notesPreview"></div>
+          </section>
+
+          <section class="signatures">
+            <h3 class="section-title">簽名確認</h3>
+            <div class="sign-grid">
+              <div class="sign-box"><div class="sign-line">客戶簽名</div></div>
+              <div class="sign-box"><div class="sign-line">公司簽名</div></div>
+            </div>
+          </section>
+
+          <p class="print-note">本報價單為正式文件，內容如有疑問請於有效期限內洽詢。</p>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      const STORAGE_KEY = "quotation_tool_zh_tw_v3";
+
+      const defaultState = {
+        brandName: "曜映設計",
+        quotationTitle: "曜映設計公司報價單",
+        projectName: "品牌形象網站建置專案",
+        companyName: "曜映設計有限公司",
+        phone: "02-2712-3456",
+        address: "台北市松山區復興北路 123 號 8 樓",
+        date: "2026-04-09",
+        logoDataUrl: "",
+        items: [
+          { id: 1, itemName: "網站視覺設計", spec: "首頁與 5 個內頁視覺設計\n含 RWD 響應式版型規劃", amount: 68000 },
+          { id: 2, itemName: "前端切版與互動", spec: "HTML / CSS / JS 切版\n跨裝置相容性調整", amount: 42000 },
+        ],
+        paymentLines: [
+          {
+            id: 1,
+            label: "訂金",
+            content:
+              "於報價單或合約書簽署確認後 10 日內支付報價總額 50% 為訂金，工作日以訂金繳付後始為生效。",
+          },
+          { id: 2, label: "尾款", content: "於交付網站檔案 3 日內，支付報價總額 50%。" },
+          { id: 3, label: "銀行", content: "台灣銀行 城中分行（代碼 004）" },
+          { id: 4, label: "戶名 / 帳戶", content: "曜映設計有限公司 / 123-456-789-000" },
+        ],
+        noteLines: [
+          { id: 1, label: "報價有效期限", content: "本報價單自開立日起 14 日內有效。" },
+          { id: 2, label: "製作工作天", content: "確認訂金後約 20 個工作天完成第一版提案。" },
+        ],
+      };
+
+      let state = structuredClone(defaultState);
+
+      const basicInputMap = {
+        brandName: document.getElementById("brandNameInput"),
+        quotationTitle: document.getElementById("quotationTitleInput"),
+        projectName: document.getElementById("projectNameInput"),
+        companyName: document.getElementById("companyNameInput"),
+        phone: document.getElementById("phoneInput"),
+        address: document.getElementById("addressInput"),
+        date: document.getElementById("dateInput"),
+      };
+
+      function formatCurrency(value) {
+        return Number(value || 0).toLocaleString("zh-TW");
+      }
+
+      function normalizeAmount(value) {
+        const cleaned = String(value || "").replace(/[^\d]/g, "");
+        return cleaned ? Number(cleaned) : 0;
+      }
+
+      function formatDateDisplay(dateString) {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+        if (Number.isNaN(date.getTime())) return dateString;
+        return new Intl.DateTimeFormat("zh-TW", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }).format(date);
+      }
+
+      function calculateTotals() {
+        const subtotal = state.items.reduce((sum, row) => sum + Number(row.amount || 0), 0);
+        const total = subtotal;
+        const tax = Math.round(total * 0.05);
+        const grandTotal = total + tax;
+        return { subtotal, total, tax, grandTotal };
+      }
+
+      function renderItems() {
+        const tbody = document.getElementById("itemsPreviewBody");
+        tbody.innerHTML = "";
+
+        if (!state.items.length) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = '<td colspan="4" style="text-align:center;color:#7a8481;">尚未新增明細資料</td>';
+          tbody.appendChild(tr);
+          return;
+        }
+
+        state.items.forEach((row, index) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td class="col-no">${index + 1}</td>
+            <td>${row.itemName || ""}</td>
+            <td class="spec-text">${row.spec || ""}</td>
+            <td class="col-amount">${formatCurrency(row.amount)}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function renderTotals() {
+        const totals = calculateTotals();
+        document.getElementById("totalsPreview").innerHTML = `
+          <div class="totals-row"><div class="totals-label">小計</div><div class="totals-value">${formatCurrency(totals.subtotal)}</div></div>
+          <div class="totals-row"><div class="totals-label">總額</div><div class="totals-value">${formatCurrency(totals.total)}</div></div>
+          <div class="totals-row"><div class="totals-label">營業稅 5%</div><div class="totals-value">${formatCurrency(totals.tax)}</div></div>
+          <div class="totals-row strong"><div class="totals-label">總額（含稅）</div><div class="totals-value">${formatCurrency(totals.grandTotal)}</div></div>
+        `;
+      }
+
+      function renderKeyValuePreview(lines, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+
+        if (!lines.length) {
+          container.innerHTML = '<div class="kv-row"><div class="kv-label">欄位</div><div class="kv-value">尚未設定內容</div></div>';
+          return;
+        }
+
+        lines.forEach((line) => {
+          const row = document.createElement("div");
+          row.className = "kv-row";
+          row.innerHTML = `<div class="kv-label">${line.label || "未命名"}</div><div class="kv-value">${line.content || ""}</div>`;
+          container.appendChild(row);
+        });
+      }
+
+      function renderPreview() {
+        document.getElementById("brandNamePreview").textContent = state.brandName || "";
+        document.getElementById("quotationTitlePreview").textContent = state.quotationTitle || "";
+        document.getElementById("projectNamePreview").textContent = state.projectName || "";
+        document.getElementById("companyNamePreview").textContent = state.companyName || "";
+        document.getElementById("datePreview").textContent = formatDateDisplay(state.date);
+        document.getElementById("phonePreview").textContent = state.phone || "";
+        document.getElementById("addressPreview").textContent = state.address || "";
+
+        const logoHolder = document.getElementById("logoPreview");
+        if (state.logoDataUrl) {
+          logoHolder.innerHTML = `<img src="${state.logoDataUrl}" alt="品牌 Logo" />`;
+        } else {
+          logoHolder.textContent = "品牌 Logo";
+        }
+
+        renderItems();
+        renderTotals();
+        renderKeyValuePreview(state.paymentLines, "paymentPreview");
+        renderKeyValuePreview(state.noteLines, "notesPreview");
+      }
+
+      function renderItemsManager() {
+        const manager = document.getElementById("itemsManager");
+        manager.innerHTML = "";
+
+        if (!state.items.length) {
+          manager.innerHTML = '<div class="manager-empty">目前沒有明細列</div>';
+          return;
+        }
+
+        state.items.forEach((row, index) => {
+          const card = document.createElement("div");
+          card.className = "manager-card";
+          card.innerHTML = `
+            <p class="manager-head">明細 #${index + 1}</p>
+            <div class="manager-row">
+              <div>
+                <input type="text" data-type="item" data-id="${row.id}" data-field="itemName" value="${row.itemName || ""}" placeholder="項目" style="margin-bottom:6px;" />
+                <textarea data-type="item" data-id="${row.id}" data-field="spec" placeholder="規格內容" style="margin-bottom:6px;">${row.spec || ""}</textarea>
+                <input type="text" data-type="item" data-id="${row.id}" data-field="amount" value="${formatCurrency(row.amount)}" placeholder="金額" />
+              </div>
+              <button class="btn btn-danger" type="button" data-action="remove-item" data-id="${row.id}">刪除</button>
+            </div>
+          `;
+          manager.appendChild(card);
+        });
+      }
+
+      function renderLineManager(lines, containerId, type) {
+        const manager = document.getElementById(containerId);
+        manager.innerHTML = "";
+
+        if (!lines.length) {
+          manager.innerHTML = '<div class="manager-empty">目前沒有欄位</div>';
+          return;
+        }
+
+        lines.forEach((line, index) => {
+          const card = document.createElement("div");
+          card.className = "manager-card";
+          card.innerHTML = `
+            <p class="manager-head">${type === "payment" ? "付款" : "備註"}欄位 #${index + 1}</p>
+            <div class="manager-row">
+              <div>
+                <input type="text" data-type="${type}" data-id="${line.id}" data-field="label" value="${line.label || ""}" placeholder="欄位名稱" style="margin-bottom:6px;" />
+                <textarea data-type="${type}" data-id="${line.id}" data-field="content" placeholder="欄位內容">${line.content || ""}</textarea>
+              </div>
+              <button class="btn btn-danger" type="button" data-action="remove-${type}" data-id="${line.id}">刪除</button>
+            </div>
+          `;
+          manager.appendChild(card);
+        });
+      }
+
+      function renderManagers() {
+        renderItemsManager();
+        renderLineManager(state.paymentLines, "paymentManager", "payment");
+        renderLineManager(state.noteLines, "notesManager", "note");
+      }
+
+      function persistDraft() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function loadDraft() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return;
+          const parsed = JSON.parse(raw);
+          state = {
+            ...defaultState,
+            ...parsed,
+            items: Array.isArray(parsed.items) ? parsed.items : structuredClone(defaultState.items),
+            paymentLines: Array.isArray(parsed.paymentLines)
+              ? parsed.paymentLines
+              : structuredClone(defaultState.paymentLines),
+            noteLines: Array.isArray(parsed.noteLines)
+              ? parsed.noteLines
+              : structuredClone(defaultState.noteLines),
+          };
+        } catch (error) {
+          console.warn("草稿讀取失敗", error);
+        }
+      }
+
+      function handleLogoUpload(file) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          state.logoDataUrl = String(reader.result || "");
+          renderPreview();
+          persistDraft();
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function syncBasicInputsFromState() {
+        Object.entries(basicInputMap).forEach(([key, input]) => {
+          input.value = state[key] || "";
+        });
+      }
+
+      function addRow(listName, template) {
+        const list = state[listName];
+        const newId = list.length ? Math.max(...list.map((item) => item.id || 0)) + 1 : 1;
+        list.push({ id: newId, ...template });
+      }
+
+      function bindPanelEvents() {
+        Object.entries(basicInputMap).forEach(([key, input]) => {
+          input.addEventListener("input", () => {
+            state[key] = input.value;
+            renderPreview();
+            persistDraft();
+          });
+        });
+
+        document.getElementById("logoUploadInput").addEventListener("change", (event) => {
+          handleLogoUpload(event.target.files[0]);
+        });
+
+        document.getElementById("addItemBtn").addEventListener("click", () => {
+          addRow("items", { itemName: "", spec: "", amount: 0 });
+          renderAll();
+          persistDraft();
+        });
+
+        document.getElementById("addPaymentLineBtn").addEventListener("click", () => {
+          addRow("paymentLines", { label: "新付款欄位", content: "" });
+          renderAll();
+          persistDraft();
+        });
+
+        document.getElementById("addNoteLineBtn").addEventListener("click", () => {
+          addRow("noteLines", { label: "新備註欄位", content: "" });
+          renderAll();
+          persistDraft();
+        });
+
+        document.querySelector(".panel").addEventListener("input", (event) => {
+          const target = event.target;
+          if (!target.dataset.type) return;
+
+          const id = Number(target.dataset.id);
+          const field = target.dataset.field;
+          const type = target.dataset.type;
+
+          if (type === "item") {
+            const row = state.items.find((item) => item.id === id);
+            if (!row) return;
+            if (field === "amount") {
+              row.amount = normalizeAmount(target.value);
+              target.value = formatCurrency(row.amount);
+            } else {
+              row[field] = target.value;
+            }
+          } else {
+            const source = type === "payment" ? state.paymentLines : state.noteLines;
+            const row = source.find((item) => item.id === id);
+            if (!row) return;
+            row[field] = target.value;
+          }
+
+          renderPreview();
+          persistDraft();
+        });
+
+        document.querySelector(".panel").addEventListener("click", (event) => {
+          const target = event.target;
+          const action = target.dataset.action;
+          if (!action) return;
+          const id = Number(target.dataset.id);
+
+          if (action === "remove-item") {
+            state.items = state.items.filter((item) => item.id !== id);
+          }
+          if (action === "remove-payment") {
+            state.paymentLines = state.paymentLines.filter((item) => item.id !== id);
+          }
+          if (action === "remove-note") {
+            state.noteLines = state.noteLines.filter((item) => item.id !== id);
+          }
+
+          renderAll();
+          persistDraft();
+        });
+
+        document.getElementById("saveDraftBtn").addEventListener("click", () => {
+          persistDraft();
+          alert("草稿已儲存到本機（localStorage）。");
+        });
+
+        document.getElementById("resetBtn").addEventListener("click", () => {
+          if (!confirm("確定要重設為預設內容？")) return;
+          state = structuredClone(defaultState);
+          renderAll();
+          persistDraft();
+        });
+
+        document.getElementById("downloadPdfBtn").addEventListener("click", () => {
+          window.print();
+        });
+      }
+
+      function renderAll() {
+        syncBasicInputsFromState();
+        renderManagers();
+        renderPreview();
+      }
+
+      loadDraft();
+      bindPanelEvents();
+      renderAll();
+    </script>
+  </body>
+</html>
