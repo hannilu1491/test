@@ -63,6 +63,28 @@
         font-size: 14px;
       }
 
+      .panel-section {
+        border: 1px solid #dfe6e3;
+        border-radius: 12px;
+        background: #f7faf9;
+        padding: 14px;
+        margin-bottom: 14px;
+      }
+
+      .panel-section h2 {
+        margin: 0 0 10px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #36524a;
+      }
+
+      .field-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
       .field {
         margin-bottom: 12px;
       }
@@ -131,6 +153,15 @@
         background: var(--color-primary-800);
         color: var(--color-text-light);
         display: grid;
+        grid-template-columns: 90px 1.2fr 1fr 220px;
+        align-items: center;
+        gap: 12px;
+        padding: 22px 24px;
+      }
+
+      .logo-mark {
+        width: 70px;
+        height: 70px;
         grid-template-columns: 110px 1fr 1fr 260px;
         align-items: center;
         gap: 12px;
@@ -147,12 +178,15 @@
       .brand-title {
         font-family: "Noto Serif TC", serif;
         letter-spacing: 0.18em;
+        font-size: 38px;
         font-size: 50px;
         margin: 0;
       }
 
       .brand-sub {
         margin: 6px 0 0;
+        letter-spacing: 0.14em;
+        font-size: 14px;
         letter-spacing: 0.18em;
         font-size: 18px;
         color: #d8cead;
@@ -167,12 +201,14 @@
         margin: 0;
         color: #d7cb9a;
         letter-spacing: 0.12em;
+        font-size: 12px;
         font-size: 14px;
         text-transform: uppercase;
       }
 
       .meta-sub {
         margin: 8px 0 0;
+        font-size: 16px;
         font-size: 20px;
         color: #e7e0cb;
       }
@@ -191,6 +227,7 @@
       .list-price strong {
         display: block;
         font-family: "Noto Serif TC", serif;
+        font-size: 52px;
         font-size: 72px;
         line-height: 1;
         color: #efe6cc;
@@ -199,6 +236,14 @@
       .quote-discount-head {
         background: var(--color-primary-900);
         color: #d8cc9e;
+        padding: 12px 24px;
+      }
+
+      .quote-discount-head .title {
+        letter-spacing: 0.3em;
+        text-align: center;
+        margin: 0 0 8px;
+        font-size: 13px;
         padding: 16px 28px;
       }
 
@@ -215,12 +260,14 @@
 
       th,
       td {
+        padding: 14px 16px;
         padding: 18px 20px;
         border-bottom: 1px solid var(--color-border-soft);
       }
 
       thead th {
         color: #cfbf82;
+        font-size: 12px;
         font-size: 14px;
         letter-spacing: 0.06em;
         font-weight: 600;
@@ -241,6 +288,11 @@
       }
 
       .term-pill {
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: var(--color-primary-800);
+        color: #d8cb96;
+        font-size: 12px;
         padding: 8px 12px;
         border-radius: 8px;
         background: var(--color-primary-800);
@@ -261,6 +313,8 @@
 
       .cell-price {
         font-family: "Noto Serif TC", serif;
+        font-size: 24px;
+        line-height: 1.15;
         font-size: 52px;
         color: #173f35;
       }
@@ -269,6 +323,7 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
+        padding: 22px 24px;
         padding: 28px;
         background: var(--color-accent-gold);
       }
@@ -285,6 +340,8 @@
 
       .cash-title {
         font-family: "Noto Serif TC", serif;
+        font-size: 50px;
+        margin: 10px 0 0;
         font-size: 68px;
         margin: 14px 0 0;
       }
@@ -295,6 +352,7 @@
 
       .best-price strong {
         font-family: "Noto Serif TC", serif;
+        font-size: 56px;
         font-size: 78px;
       }
 
@@ -304,6 +362,10 @@
       }
 
       .bottom-note {
+        padding: 8px 24px;
+        background: #f6f2e8;
+        color: #7a766d;
+        font-size: 11px;
         padding: 10px 28px;
         background: #f6f2e8;
         color: #7a766d;
@@ -318,6 +380,9 @@
         }
         .panel {
           position: static;
+        }
+        .field-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -347,6 +412,94 @@
           border-radius: 0;
           box-shadow: none;
         }
+
+        .quote-header {
+          grid-template-columns: 74px 1.25fr 1fr 180px;
+          padding: 14px 16px;
+        }
+
+        .logo-mark {
+          width: 56px;
+          height: 56px;
+        }
+
+        .brand-title {
+          font-size: 29px;
+        }
+
+        .brand-sub {
+          font-size: 11px;
+          letter-spacing: 0.1em;
+        }
+
+        .meta-title {
+          font-size: 10px;
+        }
+
+        .meta-sub {
+          font-size: 12px;
+          margin-top: 4px;
+        }
+
+        .list-price strong {
+          font-size: 38px;
+        }
+
+        .list-price small {
+          font-size: 10px;
+        }
+
+        .quote-discount-head {
+          padding: 10px 16px;
+        }
+
+        .quote-discount-head .title {
+          font-size: 10px;
+          margin-bottom: 6px;
+        }
+
+        th,
+        td {
+          padding: 8px 10px;
+        }
+
+        thead th {
+          font-size: 10px;
+        }
+
+        .term-pill {
+          font-size: 10px;
+          padding: 4px 7px;
+        }
+
+        .term-cell span:last-child {
+          font-size: 11px;
+        }
+
+        .cell-price {
+          font-size: 16px;
+        }
+
+        .quote-footer {
+          padding: 14px 16px;
+        }
+
+        .cash-title {
+          font-size: 34px;
+        }
+
+        .best-price strong {
+          font-size: 38px;
+        }
+
+        .best-price small {
+          font-size: 10px;
+        }
+
+        .bottom-note {
+          padding: 6px 16px;
+          font-size: 9px;
+        }
       }
     </style>
   </head>
@@ -356,6 +509,43 @@
         <h1>報價單工具</h1>
         <p>可編輯欄位、動態列、套用你指定的深綠金色系風格，並下載 A4 PDF。</p>
 
+        <section class="panel-section">
+          <h2>品牌資訊</h2>
+          <div class="field">
+            <label for="projectName">專案名稱</label>
+            <input id="projectName" value="TIERRA VIVA" />
+          </div>
+          <div class="field">
+            <label for="projectSub">副標</label>
+            <input id="projectSub" value="BOSQUE RESIDENCIAL · ZAPOPAN, JALISCO" />
+          </div>
+        </section>
+
+        <section class="panel-section">
+          <h2>報價參數</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="periodText">期間說明</label>
+              <input id="periodText" value="ENERO 2026 · VIGENCIA LIMITADA" />
+            </div>
+            <div class="field">
+              <label for="listPrice">牌價（MXN / m²）</label>
+              <input id="listPrice" type="number" value="1790" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="layoutStyle">欄位版型（專業視覺）</label>
+            <input id="layoutStyle" value="Classic Luxury Grid" disabled />
+          </div>
+        </section>
+
+        <div class="field">
+          <label for="columnHint">欄位建議</label>
+          <input
+            id="columnHint"
+            value="建議使用：期數 / 10%訂金 / 20%訂金 / 30%訂金"
+            disabled
+          />
         <div class="field">
           <label for="projectName">專案名稱</label>
           <input id="projectName" value="TIERRA VIVA" />
