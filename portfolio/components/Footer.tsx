@@ -1,16 +1,1 @@
-export default function Footer() {
-  return (
-    <footer className="mt-24 border-t border-white/10 bg-[#12110f] text-[#ebe5db]">
-      <div className="mx-auto grid max-w-[1240px] gap-12 px-6 py-14 md:grid-cols-[1fr_auto_auto] md:items-end">
-        <div>
-          <p className="max-w-md font-serif text-4xl leading-tight">Let’s create something meaningful together.</p>
-          <p className="mt-4 text-sm text-[#b8ac9c]">I’m always open to new opportunities and thoughtful collaborations.</p>
-        </div>
-        <a href="mailto:hello@hannilu.design" className="inline-flex items-center rounded-full bg-[#d4b483] px-7 py-3 text-sm text-[#151311] transition hover:bg-[#e2c18f]">Contact Me →</a>
-        <div className="space-y-2 text-sm text-[#d5ccbf]">
-          <p>LinkedIn</p><p>Instagram</p><p>Behance</p><p>Email</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
+export default function Footer(){return <footer className="mt-24 border-t border-warm-200 px-6 py-12"><div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2"><p className="font-serif text-2xl">Let’s design something meaningful.</p><div className="space-y-1 text-sm text-warm-700"><p>Email: hello@hannilu.design</p><p>LinkedIn / Behance / Instagram</p><p>Resume Download</p></div></div></footer>}
